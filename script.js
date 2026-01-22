@@ -1,131 +1,116 @@
-// ---------- Typewriter (animated description) ----------
+// Year
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Typed description (minimal + classy)
 const lines = [
-  "A tactical 90-day roadmap to scale trust and adoption across Africa and Asia remittance corridors.",
-  "Localized growth loops, measurable KPIs, and fast execution — designed to be easy to scan and hard to ignore."
+  "A tactical 90-day roadmap to scale trust and adoption.",
+  "Designed for localized growth loops, fast experimentation, and measurable ROI.",
+  "Built for Africa & Asia remittance corridors — execution-ready."
 ];
 
-const target = document.getElementById("typeTarget");
-let lineIndex = 0;
-let charIndex = 0;
-let deleting = false;
+const typedEl = document.getElementById("typed");
+let line = 0, i = 0;
 
-function typeLoop(){
-  if (!target) return;
+function typeNext() {
+  const current = lines[line];
+  typedEl.textContent = current.slice(0, i++);
+  if (i <= current.length) return setTimeout(typeNext, 18);
 
-  const current = lines[lineIndex];
-  const speed = deleting ? 18 : 28;
-
-  if (!deleting) {
-    target.textContent = current.slice(0, charIndex++);
-    if (charIndex > current.length + 14) {
-      deleting = true;
-    }
-  } else {
-    target.textContent = current.slice(0, charIndex--);
-    if (charIndex < 0) {
-      deleting = false;
-      charIndex = 0;
-      lineIndex = (lineIndex + 1) % lines.length;
-    }
-  }
-  setTimeout(typeLoop, speed);
+  // Pause, then next line
+  setTimeout(() => {
+    i = 0;
+    line = (line + 1) % lines.length;
+    typeNext();
+  }, 1100);
 }
-typeLoop();
+typeNext();
 
-// ---------- Video hint if missing ----------
-const heroVideo = document.getElementById("heroVideo");
-const videoHint = document.getElementById("videoHint");
-if (heroVideo && videoHint) {
-  heroVideo.addEventListener("error", () => {
-    videoHint.style.display = "block";
-  });
-  // If it can’t load metadata, likely missing
-  heroVideo.addEventListener("loadedmetadata", () => {
-    videoHint.style.display = "none";
-  });
-}
-
-// ---------- Slides grid + lightbox ----------
-const slidesGrid = document.getElementById("slidesGrid");
-const lightbox = document.getElementById("lightbox");
-const lbImg = document.getElementById("lbImg");
-const lbClose = document.getElementById("lbClose");
-const lbPrev = document.getElementById("lbPrev");
-const lbNext = document.getElementById("lbNext");
-const lbCount = document.getElementById("lbCount");
-
-const SLIDE_COUNT = 13;
-
-// If your slides are slide_01.png ... slide_13.png in assets/slides/
-const slides = Array.from({length: SLIDE_COUNT}, (_, i) => {
-  const n = String(i + 1).padStart(2, "0");
+// Slides (lazy render for speed)
+const totalSlides = 13;
+const grid = document.getElementById("slidesGrid");
+const slidePaths = Array.from({ length: totalSlides }, (_, idx) => {
+  const n = String(idx + 1).padStart(2, "0");
   return `assets/slides/slide_${n}.png`;
 });
 
-let currentSlide = 0;
+// Create thumbnails
+slidePaths.forEach((src, idx) => {
+  const btn = document.createElement("button");
+  btn.className = "slideThumb";
+  btn.type = "button";
+  btn.setAttribute("aria-label", `Open slide ${idx + 1}`);
 
-function renderSlides(){
-  if (!slidesGrid) return;
-  slidesGrid.innerHTML = "";
+  const img = document.createElement("img");
+  img.loading = "lazy";
+  img.decoding = "async";
+  img.src = src;
+  img.alt = `Slide ${idx + 1}`;
 
-  slides.forEach((src, idx) => {
-    const card = document.createElement("button");
-    card.className = "slideThumb";
-    card.type = "button";
-    card.setAttribute("aria-label", `Open slide ${idx + 1}`);
+  btn.appendChild(img);
+  btn.addEventListener("click", () => openLightbox(idx));
+  grid.appendChild(btn);
+});
 
-    const img = document.createElement("img");
-    img.src = src;
-    img.alt = `Slide ${idx + 1}`;
+// Lightbox
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+const lightboxCap = document.getElementById("lightboxCap");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
 
-    card.appendChild(img);
-    card.addEventListener("click", () => openLightbox(idx));
-    slidesGrid.appendChild(card);
-  });
-}
+let currentIndex = 0;
 
-function openLightbox(idx){
-  currentSlide = idx;
-  if (!lightbox || !lbImg || !lbCount) return;
-  lbImg.src = slides[currentSlide];
-  lbCount.textContent = `Slide ${currentSlide + 1} of ${slides.length}`;
-  lightbox.classList.add("isOpen");
+function openLightbox(index) {
+  currentIndex = index;
+  renderSlide();
   lightbox.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
 }
 
-function closeLightbox(){
-  if (!lightbox) return;
-  lightbox.classList.remove("isOpen");
+function closeLightbox() {
   lightbox.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
 }
 
-function navSlide(dir){
-  currentSlide = (currentSlide + dir + slides.length) % slides.length;
-  lbImg.src = slides[currentSlide];
-  lbCount.textContent = `Slide ${currentSlide + 1} of ${slides.length}`;
+function renderSlide() {
+  const src = slidePaths[currentIndex];
+  lightboxImg.src = src;
+  lightboxImg.alt = `Slide ${currentIndex + 1}`;
+  lightboxCap.textContent = `Slide ${currentIndex + 1} of ${totalSlides}`;
 }
 
-if (lbClose) lbClose.addEventListener("click", closeLightbox);
-if (lbPrev) lbPrev.addEventListener("click", () => navSlide(-1));
-if (lbNext) lbNext.addEventListener("click", () => navSlide(1));
-
-if (lightbox) {
-  lightbox.addEventListener("click", (e) => {
-    if (e.target === lightbox) closeLightbox();
-  });
+function prevSlide() {
+  currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+  renderSlide();
+}
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % totalSlides;
+  renderSlide();
 }
 
-window.addEventListener("keydown", (e) => {
-  if (!lightbox || !lightbox.classList.contains("isOpen")) return;
-  if (e.key === "Escape") closeLightbox();
-  if (e.key === "ArrowLeft") navSlide(-1);
-  if (e.key === "ArrowRight") navSlide(1);
+prevBtn.addEventListener("click", prevSlide);
+nextBtn.addEventListener("click", nextSlide);
+
+lightbox.addEventListener("click", (e) => {
+  if (e.target && e.target.dataset && e.target.dataset.close) closeLightbox();
 });
 
-renderSlides();
+document.addEventListener("keydown", (e) => {
+  if (lightbox.getAttribute("aria-hidden") === "true") return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowLeft") prevSlide();
+  if (e.key === "ArrowRight") nextSlide();
+});
 
-// ---------- Footer year ----------
-const year = document.getElementById("year");
-if (year) year.textContent = new Date().getFullYear();
+// basic swipe for mobile
+let touchStartX = 0;
+lightbox.addEventListener("touchstart", (e) => {
+  touchStartX = e.changedTouches[0].clientX;
+}, { passive: true });
+
+lightbox.addEventListener("touchend", (e) => {
+  const endX = e.changedTouches[0].clientX;
+  const dx = endX - touchStartX;
+  if (Math.abs(dx) < 40) return;
+  dx > 0 ? prevSlide() : nextSlide();
+}, { passive: true });
