@@ -1,189 +1,131 @@
+// ---------- Typewriter (animated description) ----------
+const lines = [
+  "A tactical 90-day roadmap to scale trust and adoption across Africa and Asia remittance corridors.",
+  "Localized growth loops, measurable KPIs, and fast execution — designed to be easy to scan and hard to ignore."
+];
 
-const slides = window.__SLIDES__ || [];
-const highlights = window.__HIGHLIGHTS__ || [];
+const target = document.getElementById("typeTarget");
+let lineIndex = 0;
+let charIndex = 0;
+let deleting = false;
 
-const year = document.getElementById('year');
-if (year) year.textContent = new Date().getFullYear();
+function typeLoop(){
+  if (!target) return;
 
-// Theme toggle
-const themeBtn = document.getElementById('themeBtn');
-const savedTheme = localStorage.getItem('tp_theme');
-if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+  const current = lines[lineIndex];
+  const speed = deleting ? 18 : 28;
 
-themeBtn?.addEventListener('click', () => {
-  const cur = document.documentElement.getAttribute('data-theme') || 'dark';
-  const next = cur === 'light' ? 'dark' : 'light';
-  document.documentElement.setAttribute('data-theme', next);
-  localStorage.setItem('tp_theme', next);
-});
+  if (!deleting) {
+    target.textContent = current.slice(0, charIndex++);
+    if (charIndex > current.length + 14) {
+      deleting = true;
+    }
+  } else {
+    target.textContent = current.slice(0, charIndex--);
+    if (charIndex < 0) {
+      deleting = false;
+      charIndex = 0;
+      lineIndex = (lineIndex + 1) % lines.length;
+    }
+  }
+  setTimeout(typeLoop, speed);
+}
+typeLoop();
 
-// Lightbox state
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightboxImg');
-const lightboxMeta = document.getElementById('lightboxMeta');
-const closeBtn = document.getElementById('closeLightbox');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-let currentIndex = 0;
-
-function openLightbox(index){
-  currentIndex = Math.max(0, Math.min(slides.length - 1, index));
-  if (!lightbox) return;
-  lightbox.classList.add('open');
-  lightbox.setAttribute('aria-hidden', 'false');
-  render();
+// ---------- Video hint if missing ----------
+const heroVideo = document.getElementById("heroVideo");
+const videoHint = document.getElementById("videoHint");
+if (heroVideo && videoHint) {
+  heroVideo.addEventListener("error", () => {
+    videoHint.style.display = "block";
+  });
+  // If it can’t load metadata, likely missing
+  heroVideo.addEventListener("loadedmetadata", () => {
+    videoHint.style.display = "none";
+  });
 }
 
-function render(){
-  if (!lightboxImg) return;
-  lightboxImg.src = slides[currentIndex];
-  if (lightboxMeta) lightboxMeta.textContent = `Slide ${currentIndex + 1} of ${slides.length}`;
+// ---------- Slides grid + lightbox ----------
+const slidesGrid = document.getElementById("slidesGrid");
+const lightbox = document.getElementById("lightbox");
+const lbImg = document.getElementById("lbImg");
+const lbClose = document.getElementById("lbClose");
+const lbPrev = document.getElementById("lbPrev");
+const lbNext = document.getElementById("lbNext");
+const lbCount = document.getElementById("lbCount");
+
+const SLIDE_COUNT = 13;
+
+// If your slides are slide_01.png ... slide_13.png in assets/slides/
+const slides = Array.from({length: SLIDE_COUNT}, (_, i) => {
+  const n = String(i + 1).padStart(2, "0");
+  return `assets/slides/slide_${n}.png`;
+});
+
+let currentSlide = 0;
+
+function renderSlides(){
+  if (!slidesGrid) return;
+  slidesGrid.innerHTML = "";
+
+  slides.forEach((src, idx) => {
+    const card = document.createElement("button");
+    card.className = "slideThumb";
+    card.type = "button";
+    card.setAttribute("aria-label", `Open slide ${idx + 1}`);
+
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = `Slide ${idx + 1}`;
+
+    card.appendChild(img);
+    card.addEventListener("click", () => openLightbox(idx));
+    slidesGrid.appendChild(card);
+  });
+}
+
+function openLightbox(idx){
+  currentSlide = idx;
+  if (!lightbox || !lbImg || !lbCount) return;
+  lbImg.src = slides[currentSlide];
+  lbCount.textContent = `Slide ${currentSlide + 1} of ${slides.length}`;
+  lightbox.classList.add("isOpen");
+  lightbox.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
 }
 
 function closeLightbox(){
   if (!lightbox) return;
-  lightbox.classList.remove('open');
-  lightbox.setAttribute('aria-hidden', 'true');
-  if (lightboxImg) lightboxImg.src = '';
+  lightbox.classList.remove("isOpen");
+  lightbox.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
 }
 
-function prev(){
-  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-  render();
-}
-function next(){
-  currentIndex = (currentIndex + 1) % slides.length;
-  render();
+function navSlide(dir){
+  currentSlide = (currentSlide + dir + slides.length) % slides.length;
+  lbImg.src = slides[currentSlide];
+  lbCount.textContent = `Slide ${currentSlide + 1} of ${slides.length}`;
 }
 
-closeBtn?.addEventListener('click', closeLightbox);
-prevBtn?.addEventListener('click', prev);
-nextBtn?.addEventListener('click', next);
-lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+if (lbClose) lbClose.addEventListener("click", closeLightbox);
+if (lbPrev) lbPrev.addEventListener("click", () => navSlide(-1));
+if (lbNext) lbNext.addEventListener("click", () => navSlide(1));
 
-window.addEventListener('keydown', (e) => {
-  if (!lightbox?.classList.contains('open')) return;
-  if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowLeft') prev();
-  if (e.key === 'ArrowRight') next();
-});
-
-// Wire mini open buttons
-document.querySelectorAll('[data-open]').forEach(btn => {
-  btn.addEventListener('click', () => openLightbox(parseInt(btn.getAttribute('data-open') || '0', 10)));
-});
-
-// Build highlights
-const highlightGrid = document.getElementById('highlightGrid');
-if (highlightGrid){
-  highlights.forEach((i) => {
-    const card = document.createElement('button');
-    card.type = 'button';
-    card.className = 'highlightCard';
-    card.setAttribute('aria-label', `Open highlight slide ${i+1}`);
-
-    const img = document.createElement('img');
-    img.loading = 'lazy';
-    img.src = slides[i];
-    img.alt = `Highlight slide ${i+1}`;
-
-    const meta = document.createElement('div');
-    meta.className = 'meta';
-    meta.innerHTML = `<span>Highlight</span><span>Slide ${i+1}</span>`;
-
-    card.appendChild(img);
-    card.appendChild(meta);
-    card.addEventListener('click', () => openLightbox(i));
-    highlightGrid.appendChild(card);
+if (lightbox) {
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
   });
 }
 
-// Build full grid
-const grid = document.getElementById('grid');
-function buildGrid(filterStr = ''){
-  if (!grid) return;
-  grid.innerHTML = '';
-  const normalized = (filterStr || '').trim();
-
-  slides.forEach((src, idx) => {
-    const slideNo = String(idx + 1);
-    if (normalized && !slideNo.includes(normalized)) return;
-
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'thumb';
-    btn.setAttribute('aria-label', `Open slide ${idx + 1}`);
-
-    const img = document.createElement('img');
-    img.loading = 'lazy';
-    img.src = src;
-    img.alt = `Slide ${idx + 1}`;
-
-    const badge = document.createElement('div');
-    badge.className = 'badge';
-    badge.textContent = `Slide ${idx + 1}`;
-
-    btn.appendChild(img);
-    btn.appendChild(badge);
-    btn.addEventListener('click', () => openLightbox(idx));
-
-    grid.appendChild(btn);
-  });
-}
-buildGrid();
-
-// Filter + jump
-const filterInput = document.getElementById('filterInput');
-const clearFilterBtn = document.getElementById('clearFilterBtn');
-filterInput?.addEventListener('input', () => buildGrid(filterInput.value));
-clearFilterBtn?.addEventListener('click', () => { if (filterInput) filterInput.value=''; buildGrid(''); });
-
-const jumpInput = document.getElementById('jumpInput');
-const jumpBtn = document.getElementById('jumpBtn');
-jumpBtn?.addEventListener('click', () => {
-  const n = parseInt(jumpInput?.value || '', 10);
-  if (!n || n < 1 || n > slides.length) return;
-  const target = document.querySelectorAll('.thumb')[n-1];
-  target?.scrollIntoView({behavior:'smooth', block:'center'});
-  openLightbox(n-1);
+window.addEventListener("keydown", (e) => {
+  if (!lightbox || !lightbox.classList.contains("isOpen")) return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowLeft") navSlide(-1);
+  if (e.key === "ArrowRight") navSlide(1);
 });
 
-// Present mode
-const presentBtn = document.getElementById('presentBtn');
-presentBtn?.addEventListener('click', () => {
-  openLightbox(0);
-  lightbox?.requestFullscreen?.().catch(() => {});
-});
+renderSlides();
 
-// Video URL tool
-const videoUrl = document.getElementById('videoUrl');
-const applyVideoUrl = document.getElementById('applyVideoUrl');
-const resetVideo = document.getElementById('resetVideo');
-const localVideo = document.getElementById('localVideo');
-
-applyVideoUrl?.addEventListener('click', () => {
-  const url = (videoUrl?.value || '').trim();
-  if (!url) return;
-
-  const isMp4 = url.toLowerCase().includes('.mp4');
-  if (!isMp4) {
-    window.open(url, '_blank', 'noopener,noreferrer');
-    return;
-  }
-
-  localVideo?.pause();
-  const source = localVideo?.querySelector('source');
-  if (!source || !localVideo) return;
-  source.src = url;
-  localVideo.load();
-  localVideo.play().catch(() => {});
-});
-
-resetVideo?.addEventListener('click', () => {
-  localVideo?.pause();
-  const source = localVideo?.querySelector('source');
-  if (!source || !localVideo) return;
-  source.src = './assets/video.mp4';
-  localVideo.load();
-  if (videoUrl) videoUrl.value = '';
-});
+// ---------- Footer year ----------
+const year = document.getElementById("year");
+if (year) year.textContent = new Date().getFullYear();
