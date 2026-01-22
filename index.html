@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TayoPay • Interactive Strategy Deck</title>
+  <meta name="description" content="Interactive, digestible strategy experience built from the TayoPay deck." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <div class="brand">
+      <div class="brand__mark">TP</div>
+      <div class="brand__text">
+        <div class="brand__title">TayoPay</div>
+        <div class="brand__sub">Interactive Strategy Deck</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="#highlights">Highlights</a>
+      <a href="#deck">Deck</a>
+      <a href="#watch">Video</a>
+      <a href="#download">PDF</a>
+    </nav>
+
+    <div class="actions">
+      <button class="btn btn--ghost" id="themeBtn" type="button">Theme</button>
+      <button class="btn" id="presentBtn" type="button">Present</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero uses slide 1 (your new cover) -->
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div class="hero__copy">
+        <div class="pill">TRUST-FIRST GO-TO-MARKET • AFRICA ↔ ASIA</div>
+        <h1>Strategy that feels like a product</h1>
+        <p class="lead">
+          This page turns your deck into a guided, easy-to-scan experience: key takeaways first,
+          then the full deck in a clean viewer.
+        </p>
+        <div class="cta">
+          <a class="btn" href="#highlights">View highlights</a>
+          <a class="btn btn--ghost" href="#deck">Open deck</a>
+        </div>
+
+        <div class="kpis">
+          <div class="kpi"><div class="kpi__k">Goal</div><div class="kpi__v">Grow trust → first transfer</div></div>
+          <div class="kpi"><div class="kpi__k">North star</div><div class="kpi__v">Install → First Transfer</div></div>
+          <div class="kpi"><div class="kpi__k">Loop</div><div class="kpi__v">Repeat → Referral</div></div>
+        </div>
+      </div>
+
+      <div class="hero__media">
+        <div class="frame">
+          <img src="./assets/slides/slide_01.png" alt="Cover slide" />
+          <div class="frame__bar">
+            <span>Cover (Slide 1)</span>
+            <button class="miniBtn" data-open="0" type="button">Open</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights: curated digestible flow (uses selected slides) -->
+  <section class="section" id="highlights">
+    <div class="wrap">
+      <div class="section__head">
+        <h2>Executive highlights</h2>
+        <p>Start here. This is the “wow” flow: big ideas first, then details.</p>
+      </div>
+
+      <div class="highlightGrid" id="highlightGrid"></div>
+    </div>
+  </section>
+
+  <!-- Video -->
+  <section class="section" id="watch">
+    <div class="wrap">
+      <div class="section__head">
+        <h2>Ad concept video</h2>
+        <p>Add your MP4 into <code>assets/video.mp4</code> or paste a URL.</p>
+      </div>
+
+      <div class="video">
+        <video id="localVideo" controls playsinline preload="metadata" poster="./assets/slides/slide_01.png">
+          <source src="./assets/video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        <div class="video__tools">
+          <label class="field">
+            <span>Paste video URL (YouTube/Vimeo/MP4)</span>
+            <input id="videoUrl" type="url" placeholder="https://..." />
+          </label>
+          <button class="btn" id="applyVideoUrl" type="button">Use URL</button>
+          <button class="btn btn--ghost" id="resetVideo" type="button">Reset</button>
+        </div>
+
+        <p class="note">Tip: If the URL is YouTube/Vimeo, it opens in a new tab (best compatibility on GitHub Pages).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full Deck -->
+  <section class="section" id="deck">
+    <div class="wrap">
+      <div class="section__head">
+        <h2>Full deck</h2>
+        <p>Search by slide number, open in lightbox, or present full-screen.</p>
+      </div>
+
+      <div class="deckTools">
+        <label class="field field--small">
+          <span>Jump to slide #</span>
+          <input id="jumpInput" type="number" min="1" max="13" placeholder="e.g. 5" />
+        </label>
+        <button class="btn" id="jumpBtn" type="button">Go</button>
+
+        <label class="field">
+          <span>Quick filter (type a number like 1, 2, 10…)</span>
+          <input id="filterInput" type="text" placeholder="Filter by slide number" />
+        </label>
+        <button class="btn btn--ghost" id="clearFilterBtn" type="button">Clear</button>
+      </div>
+
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <!-- Download PDF -->
+  <section class="section" id="download">
+    <div class="wrap">
+      <div class="section__head">
+        <h2>Download</h2>
+        <p>Keep a PDF copy for email or WhatsApp follow-ups.</p>
+      </div>
+
+      <div class="panel">
+        <div class="pdfActions">
+          <a class="btn" href="./assets/strategy.pdf" target="_blank" rel="noopener">Open PDF</a>
+          <a class="btn btn--ghost" href="./assets/strategy.pdf" download>Download PDF</a>
+        </div>
+        <iframe class="pdfFrame" src="./assets/strategy.pdf" title="Strategy PDF"></iframe>
+        <div class="muted small">If the PDF doesn't render, click “Open PDF”.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div>© <span id="year"></span> LuliDigital</div>
+    <div class="muted">Built for GitHub Pages • Updated 2026-01-22</div>
+  </div>
+</footer>
+
+<!-- Lightbox / Presenter -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox__close" id="closeLightbox" aria-label="Close">×</button>
+  <button class="lightbox__nav lightbox__nav--prev" id="prevBtn" aria-label="Previous">‹</button>
+  <button class="lightbox__nav lightbox__nav--next" id="nextBtn" aria-label="Next">›</button>
+  <div class="lightbox__meta" id="lightboxMeta"></div>
+  <img id="lightboxImg" alt="Slide" />
+</div>
+
+<script>
+  window.__SLIDES__ = ['./assets/slides/slide_01.png', './assets/slides/slide_02.png', './assets/slides/slide_03.png', './assets/slides/slide_04.png', './assets/slides/slide_05.png', './assets/slides/slide_06.png', './assets/slides/slide_07.png', './assets/slides/slide_08.png', './assets/slides/slide_09.png', './assets/slides/slide_10.png', './assets/slides/slide_11.png', './assets/slides/slide_12.png', './assets/slides/slide_13.png'];
+  // Curated highlight order (edit freely):
+  // Cover, Executive Summary, Market Context, Audiences, Channel Strategy, 90-day Roadmap, KPIs
+  window.__HIGHLIGHTS__ = [0, 1, 2, 3, 4, 10, 11, 12].filter(i => i < window.__SLIDES__.length);
+</script>
+<script src="./script.js"></script>
+</body>
+</html>
