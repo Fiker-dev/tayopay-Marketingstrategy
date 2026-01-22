@@ -1,108 +1,140 @@
-<!DOCTYPE html>
-<html lang="en" id="top">
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TayoPay Marketing Strategy • LuliDigital</title>
-  <meta name="description" content="Marketing strategy for TayoPay by LuliDigital. A 90-day growth plan with slide walkthrough and video." />
+  <meta name="description" content="Marketing strategy walkthrough for TayoPay by LuliDigital. Video overview, downloadable strategy PDF, and slide-by-slide walkthrough." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <!-- Minimal top nav -->
-  <header class="nav">
-    <div class="nav__left">
-      <img class="nav__logo" src="assets/logo.png" alt="LuliDigital logo" />
-      <div class="nav__meta">
-        <div class="nav__brand">LuliDigital</div>
-        <div class="nav__sub">Marketing Strategy • TayoPay</div>
-      </div>
-    </div>
-    <div class="nav__right">
-      <a class="nav__link" href="#video">Video</a>
-      <a class="nav__link" href="#slides">Slides</a>
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="#top" aria-label="LuliDigital">
+        <img class="brand__logo" src="assets/img/lulidigital-logo.png" alt="LuliDigital logo" />
+        <div class="brand__text">
+          <div class="brand__name">LuliDigital</div>
+          <div class="brand__sub">Marketing Strategy • TayoPay</div>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a class="nav__link" href="#video">Video</a>
+        <a class="nav__link" href="#slides">Slides</a>
+        <a class="nav__link" href="#pdf">PDF</a>
+      </nav>
     </div>
   </header>
 
-  <main class="wrap">
-    <!-- HERO -->
+  <main id="top" class="page">
     <section class="hero">
-      <div class="hero__card">
-        <div class="hero__top">
-          <img class="hero__logo" src="assets/logo.png" alt="LuliDigital logo" />
-          <div class="hero__titles">
-            <div class="pill">90-day GTM • Growth loops • Execution plan</div>
-            <h1 class="hero__h1">Marketing Strategy for <span class="accent">TayoPay</span></h1>
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <div class="pill">90-day GTM • Growth loops • Execution plan</div>
+
+          <h1 class="hero__title">
+            Marketing Strategy for <span class="accent">TayoPay</span>
+          </h1>
+
+          <p class="hero__desc">
+            <span id="typed"></span><span class="cursor" aria-hidden="true">▍</span>
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#slides">
+              👉 Strategy walkthrough (slides)
+            </a>
+            <a class="btn btn--ghost" href="assets/strategy.pdf" target="_blank" rel="noopener">
+              Open PDF
+            </a>
+            <a class="btn btn--ghost" href="assets/strategy.pdf" download>
+              Download PDF
+            </a>
+          </div>
+
+          <div class="hero__meta">
+            <div class="metaCard">
+              <div class="metaCard__k">Deliverable</div>
+              <div class="metaCard__v">Strategy + slide walkthrough + video overview</div>
+            </div>
+            <div class="metaCard">
+              <div class="metaCard__k">Prepared by</div>
+              <div class="metaCard__v">LuliDigital Agency</div>
+            </div>
           </div>
         </div>
 
-        <!-- Animated description -->
-        <p class="hero__desc">
-          <span class="type" id="typeTarget"></span><span class="caret" aria-hidden="true">|</span>
-        </p>
+        <div class="hero__media" id="video">
+          <div class="card">
+            <div class="card__head">
+              <div class="card__title">Strategy overview (video)</div>
+              <div class="card__hint">Tip: tap fullscreen for best viewing</div>
+            </div>
 
-        <!-- Video (right after description) -->
-        <div id="video" class="videoCard">
-          <video id="heroVideo" controls playsinline preload="metadata" poster="">
-            <!-- Primary (recommended path) -->
-            <source src="assets/video/tayopay-intro.mp4" type="video/mp4" />
-            <!-- Fallback (if your MP4 is in repo root like your screenshot) -->
-            <source src="Generating_Fintech_Ad_Video.mp4" type="video/mp4" />
-            Your browser does not support video.
-          </video>
-          <div class="videoHint" id="videoHint">
-            If video doesn’t load: confirm it’s at <code>assets/video/tayopay-intro.mp4</code> (recommended) or in repo root.
+            <div class="videoWrap">
+              <video
+                class="video"
+                controls
+                playsinline
+                preload="metadata"
+                src="assets/video/tayopay-intro.mp4">
+              </video>
+            </div>
           </div>
-        </div>
-
-        <!-- CTA -->
-        <div class="ctaRow">
-          <a class="btn btn--solid" href="#slides">
-            👉 Strategy walkthrough (slides)
-          </a>
-          <a class="btn btn--ghost" href="#pdf" id="openPdfBtn">
-            Open PDF
-          </a>
         </div>
       </div>
     </section>
 
-    <!-- PDF (optional) -->
-    <section class="section" id="pdf">
-      <div class="section__head">
-        <h2>PDF</h2>
-        <p>Optional — only keep this if you want the PDF accessible.</p>
-      </div>
-      <div class="pdfCard">
-        <a class="btn btn--ghost" href="assets/strategy.pdf" target="_blank" rel="noreferrer">Open Strategy PDF</a>
-        <a class="btn btn--ghost" href="assets/strategy.pdf" download>Download PDF</a>
-      </div>
-    </section>
-
-    <!-- SLIDES -->
     <section class="section" id="slides">
-      <div class="section__head">
-        <h2>Strategy walkthrough</h2>
-        <p>Tap a slide to open it large. Use arrows to navigate.</p>
-      </div>
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Strategy walkthrough</h2>
+          <p class="section__sub">Click a slide to open it. Use arrows (or swipe on mobile) to navigate.</p>
+        </div>
 
-      <div class="slidesGrid" id="slidesGrid"></div>
+        <div class="slidesGrid" id="slidesGrid" aria-label="Slides grid"></div>
+      </div>
     </section>
 
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox" aria-hidden="true">
-      <button class="lightbox__close" id="lbClose" aria-label="Close">✕</button>
-      <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" aria-label="Previous">‹</button>
-      <img class="lightbox__img" id="lbImg" alt="Slide preview" />
-      <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Next">›</button>
-      <div class="lightbox__count" id="lbCount"></div>
-    </div>
+    <section class="section" id="pdf">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Strategy PDF</h2>
+          <p class="section__sub">Keep this if you want the PDF accessible and downloadable.</p>
+        </div>
+
+        <div class="pdfActions">
+          <a class="btn btn--ghost" href="assets/strategy.pdf" target="_blank" rel="noopener">Open Strategy PDF</a>
+          <a class="btn btn--ghost" href="assets/strategy.pdf" download>Download PDF</a>
+        </div>
+      </div>
+    </section>
 
     <footer class="footer">
-      <div>© <span id="year"></span> LuliDigital • TayoPay Strategy</div>
-      <a href="#top" class="footer__link">Back to top</a>
+      <div class="container footer__inner">
+        <div>© <span id="year"></span> LuliDigital • TayoPay Strategy</div>
+        <a class="nav__link" href="#top">Back to top</a>
+      </div>
     </footer>
   </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Slide viewer">
+    <div class="lightbox__bg" data-close="1"></div>
+    <div class="lightbox__panel">
+      <button class="iconBtn" type="button" data-close="1" aria-label="Close">✕</button>
+      <button class="iconBtn iconBtn--left" type="button" id="prevBtn" aria-label="Previous slide">‹</button>
+      <button class="iconBtn iconBtn--right" type="button" id="nextBtn" aria-label="Next slide">›</button>
+      <img id="lightboxImg" class="lightbox__img" alt="Slide" />
+      <div class="lightbox__caption" id="lightboxCap"></div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
