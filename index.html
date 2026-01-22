@@ -1,214 +1,109 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" id="top">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="description" content="TayoPay 90-Day Digital Growth Strategy — interactive story + deck + sprint plan." />
-  <title>TayoPay — 90-Day Digital Growth Strategy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TayoPay Marketing Strategy • LuliDigital</title>
+  <meta name="description" content="Marketing strategy for TayoPay by LuliDigital. A 90-day growth plan with slide walkthrough and video." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <!-- Minimal Topbar -->
-  <header class="topbar">
-    <div class="container topbar__inner">
-      <div class="brand">
-        <span class="brand__dot" aria-hidden="true"></span>
-        <div class="brand__text">
-          <div class="brand__name">TayoPay</div>
-          <div class="brand__sub">90-Day Digital Growth Strategy</div>
-        </div>
+  <!-- Minimal top nav -->
+  <header class="nav">
+    <div class="nav__left">
+      <img class="nav__logo" src="assets/logo.png" alt="LuliDigital logo" />
+      <div class="nav__meta">
+        <div class="nav__brand">LuliDigital</div>
+        <div class="nav__sub">Marketing Strategy • TayoPay</div>
       </div>
-
-      <div class="topbar__actions">
-        <a class="btn btn--ghost" href="assets/strategy.pdf" target="_blank" rel="noopener">Open PDF</a>
-        <a class="btn btn--primary" href="#deck">View Slides</a>
-      </div>
+    </div>
+    <div class="nav__right">
+      <a class="nav__link" href="#video">Video</a>
+      <a class="nav__link" href="#slides">Slides</a>
     </div>
   </header>
 
-  <!-- HERO: Clean, controlled, mobile-friendly -->
-  <main>
-    <section class="hero" id="top">
-      <div class="container hero__grid">
-        <div class="hero__copy">
-          <div class="pill">Strategy • GTM • 90-day sprint</div>
-          <h1>Scale trust & adoption across Africa & Asia remittance corridors</h1>
-          <p class="lead">
-            A lean, execution-ready plan designed for localized growth loops, fast experimentation,
-            and measurable ROI.
-          </p>
-
-          <div class="hero__cta">
-            <a class="btn btn--primary" href="#story">Start the story</a>
-            <a class="btn btn--ghost" href="#pdf">View PDF</a>
-          </div>
-
-          <div class="meta">
-            <span>Mobile-first</span><span class="dot">•</span>
-            <span>Interactive deck</span><span class="dot">•</span>
-            <span>Clear sprint plan</span>
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__card">
+        <div class="hero__top">
+          <img class="hero__logo" src="assets/logo.png" alt="LuliDigital logo" />
+          <div class="hero__titles">
+            <div class="pill">90-day GTM • Growth loops • Execution plan</div>
+            <h1 class="hero__h1">Marketing Strategy for <span class="accent">TayoPay</span></h1>
           </div>
         </div>
 
-        <!-- Hero media: NOT a screenshot dump. Controlled aspect ratio + object-fit -->
-        <div class="hero__media" aria-label="TayoPay cover">
-          <img
-            src="assets/slides/slide_01.png"
-            alt="TayoPay 90-Day Digital Growth Strategy cover"
-            loading="eager"
-          />
-        </div>
-      </div>
-    </section>
+        <!-- Animated description -->
+        <p class="hero__desc">
+          <span class="type" id="typeTarget"></span><span class="caret" aria-hidden="true">|</span>
+        </p>
 
-    <!-- STORY (minimalistic narrative sections) -->
-    <section class="section" id="story">
-      <div class="container">
-        <div class="section__title">
-          <h2>The story (quick, digestible)</h2>
-          <p>Skim this like a founder memo. Each block is a decision.</p>
-        </div>
-
-        <div class="story">
-          <article class="story__card">
-            <h3>1) What we’re solving</h3>
-            <p>
-              People choose remittance apps based on <strong>trust</strong> and <strong>certainty</strong>:
-              fees, delivery time, and “will it work for my corridor?”
-            </p>
-          </article>
-
-          <article class="story__card">
-            <h3>2) The wedge</h3>
-            <p>
-              Win a few high-volume corridors with hyper-local creative + landing flows. Then expand corridor-by-corridor.
-            </p>
-          </article>
-
-          <article class="story__card">
-            <h3>3) The growth engine</h3>
-            <p>
-              Performance + creator distribution. A/B test creatives weekly, optimize onboarding daily, measure repeat send.
-            </p>
-          </article>
-
-          <article class="story__card">
-            <h3>4) The 90-day sprint</h3>
-            <p>
-              Weeks 1–2 foundation, 3–6 scale, 7–12 compound: referrals, retention, and corridor ROI dashboards.
-            </p>
-          </article>
-        </div>
-
-        <div class="jump">
-          <a class="btn btn--primary" href="#deck">Go to the deck</a>
-          <a class="btn btn--ghost" href="#pdf">Open the PDF</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- DECK (script.js populates #slideGrid) -->
-    <section class="section" id="deck">
-      <div class="container">
-        <div class="section__title">
-          <h2>Slide deck</h2>
-          <p>Tap any slide to view. Use arrows in the viewer.</p>
-        </div>
-
-        <div class="deck__toolbar">
-          <div class="toolbar__left">
-            <label class="field">
-              <span>Jump to slide</span>
-              <input id="slideFilter" type="number" min="1" placeholder="e.g. 7" />
-            </label>
-            <button class="btn btn--ghost" id="clearFilter" type="button">Clear</button>
-          </div>
-
-          <div class="toolbar__right">
-            <button class="btn btn--ghost" id="presentMode" type="button">Present</button>
-            <a class="btn btn--primary" href="assets/strategy.pdf" target="_blank" rel="noopener">Download PDF</a>
-          </div>
-        </div>
-
-        <div class="grid" id="slideGrid" aria-label="Slides"></div>
-      </div>
-    </section>
-
-    <!-- PDF -->
-    <section class="section" id="pdf">
-      <div class="container">
-        <div class="section__title">
-          <h2>PDF (for sharing)</h2>
-          <p>Opens cleanly on mobile + desktop.</p>
-        </div>
-
-        <div class="pdfbox">
-          <iframe
-            title="TayoPay strategy PDF"
-            src="assets/strategy.pdf#view=FitH"
-            loading="lazy"
-          ></iframe>
-
-          <div class="pdfbox__actions">
-            <a class="btn btn--primary" href="assets/strategy.pdf" target="_blank" rel="noopener">Open PDF</a>
-            <a class="btn btn--ghost" href="assets/strategy.pdf" download>Download</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- VIDEO (optional) -->
-    <section class="section" id="video">
-      <div class="container">
-        <div class="section__title">
-          <h2>Video (optional)</h2>
-          <p>If you add an MP4, it plays here.</p>
-        </div>
-
-        <div class="videobox">
-          <video controls playsinline preload="metadata" poster="assets/slides/slide_01.png">
+        <!-- Video (right after description) -->
+        <div id="video" class="videoCard">
+          <video id="heroVideo" controls playsinline preload="metadata" poster="">
+            <!-- Primary (recommended path) -->
             <source src="assets/video/tayopay-intro.mp4" type="video/mp4" />
+            <!-- Fallback (if your MP4 is in repo root like your screenshot) -->
+            <source src="Generating_Fintech_Ad_Video.mp4" type="video/mp4" />
+            Your browser does not support video.
           </video>
-          <p class="hint">
-            Put your video at <code>assets/video/tayopay-intro.mp4</code> and commit + push.
-          </p>
+          <div class="videoHint" id="videoHint">
+            If video doesn’t load: confirm it’s at <code>assets/video/tayopay-intro.mp4</code> (recommended) or in repo root.
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="ctaRow">
+          <a class="btn btn--solid" href="#slides">
+            👉 Strategy walkthrough (slides)
+          </a>
+          <a class="btn btn--ghost" href="#pdf" id="openPdfBtn">
+            Open PDF
+          </a>
         </div>
       </div>
     </section>
+
+    <!-- PDF (optional) -->
+    <section class="section" id="pdf">
+      <div class="section__head">
+        <h2>PDF</h2>
+        <p>Optional — only keep this if you want the PDF accessible.</p>
+      </div>
+      <div class="pdfCard">
+        <a class="btn btn--ghost" href="assets/strategy.pdf" target="_blank" rel="noreferrer">Open Strategy PDF</a>
+        <a class="btn btn--ghost" href="assets/strategy.pdf" download>Download PDF</a>
+      </div>
+    </section>
+
+    <!-- SLIDES -->
+    <section class="section" id="slides">
+      <div class="section__head">
+        <h2>Strategy walkthrough</h2>
+        <p>Tap a slide to open it large. Use arrows to navigate.</p>
+      </div>
+
+      <div class="slidesGrid" id="slidesGrid"></div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lightbox__close" id="lbClose" aria-label="Close">✕</button>
+      <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" aria-label="Previous">‹</button>
+      <img class="lightbox__img" id="lbImg" alt="Slide preview" />
+      <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Next">›</button>
+      <div class="lightbox__count" id="lbCount"></div>
+    </div>
+
+    <footer class="footer">
+      <div>© <span id="year"></span> LuliDigital • TayoPay Strategy</div>
+      <a href="#top" class="footer__link">Back to top</a>
+    </footer>
   </main>
 
-  <!-- Lightbox (keep your existing script.js behavior if it uses these IDs) -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <div class="lightbox__backdrop" data-close></div>
-    <div class="lightbox__panel" role="dialog" aria-modal="true">
-      <div class="lightbox__top">
-        <div class="lightbox__title">
-          <span id="lbTitle">Slide</span>
-          <span class="sep">•</span>
-          <span id="lbCounter">1 / 13</span>
-        </div>
-        <div class="lightbox__controls">
-          <input id="lbJump" type="number" min="1" aria-label="Jump to slide" />
-          <button class="btn btn--ghost" id="lbPrev" type="button">←</button>
-          <button class="btn btn--ghost" id="lbNext" type="button">→</button>
-          <button class="btn btn--ghost" data-close type="button">Esc</button>
-        </div>
-      </div>
-      <div class="lightbox__body">
-        <img id="lbImg" alt="Slide" />
-      </div>
-    </div>
-  </div>
-
-  <footer class="footer">
-    <div class="container footer__inner">
-      <span>© <span id="year"></span> TayoPay Strategy</span>
-      <a href="#top">Back to top</a>
-    </div>
-  </footer>
-
   <script src="script.js"></script>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
