@@ -1,238 +1,121 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TayoPay Marketing Strategy · LuliDigital</title>
-
-  <style>
-    :root {
-      --bg: #0b0f0e;
-      --card: #121817;
-      --text: #e6ecea;
-      --muted: #9aa5a1;
-      --accent: #6ee7b7;
-      --border: rgba(255,255,255,0.06);
-    }
-
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
-      background: radial-gradient(1200px 600px at 20% -10%, #14201c, var(--bg));
-      color: var(--text);
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 32px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    header .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    header img {
-      height: 36px;
-    }
-
-    header nav a {
-      margin-left: 18px;
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 56px 32px 80px;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(110,231,183,0.1);
-      color: var(--accent);
-      font-size: 12px;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      font-size: clamp(34px, 5vw, 54px);
-      line-height: 1.05;
-      margin: 0 0 16px;
-    }
-
-    h1 span {
-      color: var(--accent);
-    }
-
-    .subtitle {
-      color: var(--muted);
-      font-size: 16px;
-      max-width: 520px;
-    }
-
-    .actions {
-      margin-top: 28px;
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 12px 18px;
-      border-radius: 999px;
-      font-size: 14px;
-      border: 1px solid var(--border);
-      background: #0f1513;
-      color: var(--text);
-      cursor: pointer;
-    }
-
-    .btn.primary {
-      background: linear-gradient(135deg, #6ee7b7, #34d399);
-      color: #06291c;
-      border: none;
-      font-weight: 600;
-    }
-
-    /* VIDEO */
-    .video-card {
-      background: var(--card);
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      padding: 16px;
-    }
-
-    video {
-      width: 100%;
-      border-radius: 14px;
-      background: #000;
-    }
-
-    /* SLIDES */
-    .section {
-      margin-top: 72px;
-    }
-
-    .section h2 {
-      font-size: 24px;
-      margin-bottom: 18px;
-    }
-
-    .slides {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 18px;
-    }
-
-    .slide {
-      background: var(--card);
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      overflow: hidden;
-    }
-
-    .slide img {
-      width: 100%;
-      display: block;
-    }
-
-    footer {
-      margin-top: 96px;
-      padding-top: 32px;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 13px;
-      text-align: center;
-    }
-  </style>
+  <title>TayoPay Marketing Strategy • LuliDigital</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-
-<header>
-  <div class="brand">
-    <img src="assets/logo/lulidigital-logo.png" alt="LuliDigital logo">
-    <strong>LuliDigital</strong>
-  </div>
-  <nav>
-    <a href="#video">Video</a>
-    <a href="#slides">Slides</a>
-    <a href="assets/pdf/tayopay-strategy.pdf" target="_blank">PDF</a>
-  </nav>
-</header>
-
-<main>
-
-  <section class="hero" id="video">
-    <div>
-      <span class="badge">90-day GTM · Growth loops · Execution plan</span>
-      <h1>
-        Marketing Strategy for <span>TayoPay</span>
-      </h1>
-      <p class="subtitle">
-        Built for Africa & Asia remittance corridors — execution-ready.
-      </p>
-
-      <div class="actions">
-        <a href="#slides" class="btn primary">👉 Strategy walkthrough (slides)</a>
-        <a href="assets/pdf/tayopay-strategy.pdf" target="_blank" class="btn">Open PDF</a>
-        <a href="assets/pdf/tayopay-strategy.pdf" download class="btn">Download PDF</a>
+  <header class="topbar">
+    <div class="brand">
+      <img class="logo" src="assets/lulidigital-logo.png" alt="LuliDigital logo" />
+      <div class="brand-text">
+        <div class="brand-name">LuliDigital</div>
+        <div class="brand-sub">Marketing Strategy • TayoPay</div>
       </div>
     </div>
 
-    <div class="video-card">
+    <nav class="nav">
+      <button class="nav-btn is-active" data-tab="video">Video</button>
+      <button class="nav-btn" data-tab="slides">Slides</button>
+      <button class="nav-btn" data-tab="pdf">PDF</button>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-left">
+        <div class="pill">90-day GTM • Growth loops • Execution plan</div>
+        <h1>Marketing Strategy for <span class="accent">TayoPay</span></h1>
+        <p class="sub">Built for Africa &amp; Asia remittance corridors — execution-ready.</p>
+
+        <div class="cta">
+          <button class="btn btn-primary" data-jump="slides">👉 Strategy walkthrough (slides)</button>
+
+          <a class="btn" href="assets/pdf/tayopay-strategy.pdf" target="_blank" rel="noopener">
+            Open PDF
+          </a>
+
+          <a class="btn" href="assets/pdf/tayopay-strategy.pdf" download>
+            Download PDF
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Product demo (video)</div>
+            <div class="card-hint">Click to expand</div>
+          </div>
+
+          <!-- Keep the on-page player small; expand via modal -->
+          <div class="video-shell" id="videoThumb" role="button" tabindex="0" aria-label="Open video fullscreen">
+            <video
+              id="demoVideo"
+              class="video"
+              src="assets/video/tayopay-intro-1080.mp4"
+              preload="metadata"
+              playsinline
+              controls
+            ></video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TABS -->
+    <section class="tabs">
+      <div class="tab is-active" id="tab-video">
+        <div class="section-title">Video</div>
+        <p class="muted">Click the video above to expand. (It stays lightweight on load.)</p>
+      </div>
+
+      <div class="tab" id="tab-slides">
+        <div class="section-title">Strategy walkthrough</div>
+        <p class="muted">Slides load as small thumbnails first (fast). Click a slide to view large.</p>
+
+        <div class="grid" id="slidesGrid"></div>
+      </div>
+
+      <div class="tab" id="tab-pdf">
+        <div class="section-title">Strategy PDF</div>
+
+        <div class="pdf-actions">
+          <a class="btn btn-primary" href="assets/pdf/tayopay-strategy.pdf" target="_blank" rel="noopener">Open Strategy PDF</a>
+          <a class="btn" href="assets/pdf/tayopay-strategy.pdf" download>Download PDF</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- VIDEO MODAL (YouTube-style expand) -->
+  <div class="modal" id="videoModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="video"></div>
+    <div class="modal-card">
+      <button class="modal-close" data-close="video" aria-label="Close">✕</button>
       <video
+        id="videoModalPlayer"
+        class="modal-video"
+        src="assets/video/tayopay-intro-1080.mp4"
         controls
-        preload="metadata"
         playsinline
-        poster=""
-      >
-        <source src="assets/video/tayopay-intro-1080.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+        preload="auto"
+      ></video>
     </div>
-  </section>
+  </div>
 
-  <section class="section" id="slides">
-    <h2>Strategy walkthrough</h2>
-    <div class="slides">
-      <!-- Example slides — adjust paths if needed -->
-      <div class="slide"><img src="assets/slides/slide_1.png" loading="lazy"></div>
-      <div class="slide"><img src="assets/slides/slide_2.png" loading="lazy"></div>
-      <div class="slide"><img src="assets/slides/slide_3.png" loading="lazy"></div>
-      <div class="slide"><img src="assets/slides/slide_4.png" loading="lazy"></div>
+  <!-- SLIDE MODAL -->
+  <div class="modal" id="slideModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="slide"></div>
+    <div class="modal-card modal-card--img">
+      <button class="modal-close" data-close="slide" aria-label="Close">✕</button>
+      <img id="slideModalImg" class="modal-img" alt="Slide preview" />
     </div>
-  </section>
+  </div>
 
-  <footer>
-    © 2026 LuliDigital · TayoPay Marketing Strategy
-  </footer>
-
-</main>
-
+  <script src="app.js"></script>
 </body>
 </html>
