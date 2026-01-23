@@ -4,585 +4,644 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>TayoPay Marketing Strategy • LuliDigital</title>
-  <meta name="description" content="Marketing strategy deliverables for TayoPay: video, slides, and PDF." />
-
   <style>
     :root{
-      --bg:#060b0a;
-      --panel:rgba(255,255,255,.06);
-      --panel2:rgba(255,255,255,.09);
-      --border:rgba(255,255,255,.12);
+      --bg:#07110f;
+      --bg2:#0b1c17;
+      --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.085);
+      --stroke:rgba(255,255,255,.14);
       --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.66);
-      --accent:#59d1b0;
-      --shadow:0 18px 50px rgba(0,0,0,.55);
-      --r:18px;
+      --muted:rgba(255,255,255,.70);
+      --accent:#47d6b3;
+      --accent2:#9cf3df;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius:18px;
+      --radius2:22px;
+      --max:1100px;
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background:
-        radial-gradient(900px 500px at 18% 18%, rgba(89,209,176,.12), transparent 60%),
-        radial-gradient(800px 500px at 70% 12%, rgba(89,209,176,.08), transparent 55%),
-        var(--bg);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 15%, rgba(71,214,179,.14), transparent 55%),
+        radial-gradient(900px 700px at 80% 20%, rgba(156,243,223,.10), transparent 52%),
+        radial-gradient(900px 700px at 50% 90%, rgba(71,214,179,.08), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      overflow-x:hidden;
     }
 
-    /* topbar */
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 60px;}
+
+    /* Top bar */
     .topbar{
-      position:sticky; top:0; z-index:50;
       display:flex; align-items:center; justify-content:space-between;
-      gap:16px;
-      padding:14px 22px;
-      border-bottom:1px solid var(--border);
-      background:rgba(6,11,10,.72);
-      backdrop-filter:blur(14px);
+      gap:14px; padding:10px 0 22px;
     }
     .brand{
-      display:flex; align-items:center; gap:12px;
-      color:inherit; text-decoration:none;
-      min-width:260px;
+      display:flex; align-items:center; gap:10px; min-width:180px;
     }
-    .brand__logo{
-      width:44px;height:44px; border-radius:12px;
-      object-fit:contain;
+    .logo{
+      width:34px;height:34px;border-radius:10px;
       background:rgba(255,255,255,.06);
-      border:1px solid var(--border);
+      border:1px solid rgba(255,255,255,.10);
+      display:grid; place-items:center;
+      overflow:hidden;
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
     }
-    .brand__name{font-weight:800; letter-spacing:.2px}
-    .brand__sub{font-size:12px; color:var(--muted); margin-top:2px}
-    .nav{display:flex; align-items:center; gap:18px}
-    .nav a{
-      color:var(--muted);
-      text-decoration:none;
-      font-weight:700;
-      font-size:14px;
-      padding:8px 10px;
-      border-radius:12px;
-    }
-    .nav a:hover{color:var(--text); background:rgba(255,255,255,.05)}
-    .container{max-width:1120px; margin:0 auto; padding:28px 22px 44px}
+    .logo img{width:100%;height:100%;object-fit:cover;display:block}
+    .brandText{line-height:1.05}
+    .brandText .name{font-weight:700; font-size:14px; letter-spacing:.2px}
+    .brandText .sub{font-size:12px;color:var(--muted)}
 
-    /* hero layout */
+    .nav{
+      display:flex; align-items:center; gap:10px;
+      padding:6px 8px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      border-radius:999px;
+      backdrop-filter: blur(10px);
+    }
+    .nav a{
+      font-size:13px; color:var(--muted);
+      padding:8px 10px; border-radius:999px;
+      transition: transform .15s ease, background .15s ease, color .15s ease;
+    }
+    .nav a:hover{background:rgba(255,255,255,.06); color:var(--text); transform:translateY(-1px)}
+    .nav a.active{color:var(--text); background:rgba(71,214,179,.14); border:1px solid rgba(71,214,179,.22)}
+
+    /* Hero layout */
     .hero{
       display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap:22px;
-      align-items:start;
+      grid-template-columns: 1.1fr .9fr;
+      gap:18px;
+      align-items:stretch;
       margin-top:6px;
     }
-    @media (max-width: 900px){
-      .hero{grid-template-columns:1fr}
+    @media (max-width: 980px){
+      .hero{grid-template-columns: 1fr; }
+    }
+
+    .panel{
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
+      border-radius:var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .left{
+      padding:22px 22px 18px;
+      position:relative;
     }
 
     .pill{
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      padding:7px 12px;
+      display:inline-flex; gap:8px; align-items:center;
+      padding:7px 10px;
       border-radius:999px;
-      border:1px solid rgba(89,209,176,.35);
-      background:rgba(89,209,176,.08);
-      color:rgba(180,255,235,.92);
-      font-weight:800;
+      border:1px solid rgba(71,214,179,.22);
+      background: rgba(71,214,179,.10);
+      color: rgba(156,243,223,.95);
       font-size:12px;
-    }
-    h1{
-      margin:14px 0 8px;
-      font-size:52px;
-      line-height:1.02;
-      letter-spacing:-.9px;
-    }
-    @media (max-width: 520px){
-      h1{font-size:40px}
-    }
-    .accent{color:var(--accent)}
-    .subline{
-      margin:0 0 18px;
-      color:var(--muted);
-      font-size:15px;
-      min-height:24px;
-    }
-
-    /* animated description */
-    .typewrap{
-      display:inline-block;
-      position:relative;
-    }
-    .cursor{
-      display:inline-block;
-      width:10px;
-      height:18px;
-      margin-left:4px;
-      border-radius:2px;
-      background:rgba(89,209,176,.85);
-      animation: blink 1s infinite;
-      vertical-align:-3px;
-    }
-    @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
-    .fadeInUp{
-      animation: fadeInUp .6s ease both;
-    }
-    @keyframes fadeInUp{
-      from{opacity:0; transform:translateY(8px)}
-      to{opacity:1; transform:translateY(0)}
-    }
-
-    /* buttons */
-    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin:12px 0 14px}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:8px;
-      padding:11px 14px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.05);
-      color:var(--text);
-      text-decoration:none;
-      font-weight:800;
-      font-size:14px;
-      transition:transform .12s ease, background .12s ease;
-    }
-    .btn:hover{background:rgba(255,255,255,.08); transform:translateY(-1px)}
-    .btn--primary{
-      background:rgba(89,209,176,.18);
-      border:1px solid rgba(89,209,176,.35);
-    }
-    .btn--primary:hover{background:rgba(89,209,176,.24)}
-
-    .metaCards{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-      margin-top:10px;
-    }
-    @media (max-width:520px){.metaCards{grid-template-columns:1fr}}
-    .card{
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.05);
-      border-radius:var(--r);
-      padding:14px;
-    }
-    .card__label{font-size:12px; color:var(--muted); font-weight:800}
-    .card__value{margin-top:6px; font-weight:850}
-
-    /* video card (reels vibe) */
-    .videoCard{
-      border:1px solid var(--border);
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border-radius:22px;
-      padding:14px;
-      box-shadow:var(--shadow);
-    }
-    .videoTop{
-      display:flex; align-items:center; justify-content:space-between;
+      letter-spacing:.2px;
       margin-bottom:10px;
     }
-    .videoTitle{font-weight:900}
-    .linkBtn{
-      background:transparent;
-      border:none;
-      color:rgba(180,255,235,.92);
-      font-weight:900;
-      cursor:pointer;
-      padding:6px 8px;
-      border-radius:10px;
+    .h1{
+      font-size:54px;
+      line-height:1.02;
+      margin:10px 0 10px;
+      letter-spacing:-.8px;
     }
-    .linkBtn:hover{background:rgba(89,209,176,.10)}
-    .reelFrame{
-      width:100%;
-      max-width:420px;
-      margin-left:auto;
-      aspect-ratio: 9 / 16;
-      border-radius:18px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.14);
-      background:#000;
+    @media (max-width: 520px){
+      .h1{font-size:40px}
+    }
+    .h1 .accent{color:var(--accent)}
+    .desc{
+      margin:0;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.55;
+      max-width: 54ch;
+      min-height: 52px;
       position:relative;
     }
-    @media (max-width: 900px){
-      .reelFrame{max-width:520px; margin:0 auto}
+
+    /* Animated description (type + shimmer caret) */
+    .typing{
+      display:inline;
+      border-right: 2px solid rgba(156,243,223,.7);
+      padding-right:4px;
+      animation: caretBlink .9s infinite;
     }
-    video{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
+    @keyframes caretBlink{
+      0%, 50%{border-right-color:rgba(156,243,223,.7)}
+      51%, 100%{border-right-color:transparent}
     }
 
-    /* slides */
-    .section{
-      margin-top:26px;
-      padding-top:6px;
+    .actions{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:16px;
     }
-    .sectionHead{
+    .btn{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      padding:11px 14px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:14px;
+      cursor:pointer;
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18)}
+    .btn:active{transform: translateY(0px)}
+    .btnPrimary{
+      background: rgba(71,214,179,.16);
+      border-color: rgba(71,214,179,.26);
+      box-shadow: 0 10px 30px rgba(71,214,179,.10);
+    }
+
+    /* Animated “Open slides” button */
+    .btnPulse{
+      position:relative;
+      overflow:hidden;
+    }
+    .btnPulse::after{
+      content:"";
+      position:absolute; inset:-40%;
+      background: radial-gradient(circle at 20% 20%, rgba(156,243,223,.22), transparent 45%),
+                  radial-gradient(circle at 80% 60%, rgba(71,214,179,.18), transparent 45%);
+      transform: translateX(-30%) rotate(8deg);
+      animation: sheen 2.8s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes sheen{
+      0%{opacity:.25; transform: translateX(-35%) rotate(8deg)}
+      50%{opacity:.55; transform: translateX(5%) rotate(8deg)}
+      100%{opacity:.25; transform: translateX(-35%) rotate(8deg)}
+    }
+
+    /* Right video card */
+    .right{
+      padding:14px;
       display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:12px;
-      margin:18px 0 12px;
+      flex-direction:column;
+      gap:10px;
     }
-    .h2{
-      margin:0;
-      font-size:22px;
-      letter-spacing:-.2px;
+    .vHeader{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:10px 10px 0;
+      color:var(--muted);
+      font-size:13px;
     }
-    .slidesGrid{
-      display:grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap:12px;
-    }
-    @media (max-width: 1100px){.slidesGrid{grid-template-columns: repeat(4, 1fr)}}
-    @media (max-width: 860px){.slidesGrid{grid-template-columns: repeat(3, 1fr)}}
-    @media (max-width: 560px){.slidesGrid{grid-template-columns: repeat(2, 1fr)}}
+    .vTitle{color:var(--text); font-weight:700}
+    .vHint{opacity:.9}
 
-    .slideCard{
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.04);
+    .videoCard{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.28);
       border-radius:16px;
       overflow:hidden;
-      cursor:pointer;
-      transition: transform .12s ease, background .12s ease;
+      box-shadow: 0 14px 40px rgba(0,0,0,.42);
       position:relative;
-      min-height:120px;
+      aspect-ratio: 9 / 16; /* reel vibe */
     }
-    .slideCard:hover{transform:translateY(-2px); background:rgba(255,255,255,.06)}
-    .slideImg{
-      width:100%;
-      height:100%;
-      display:block;
-      object-fit:cover;
-      background:rgba(0,0,0,.25);
-    }
-    .slideBadge{
-      position:absolute; left:10px; top:10px;
-      padding:6px 9px;
-      border-radius:999px;
-      background:rgba(0,0,0,.55);
-      border:1px solid rgba(255,255,255,.18);
-      font-weight:900;
-      font-size:12px;
-      color:rgba(255,255,255,.92);
-      backdrop-filter: blur(10px);
+    @media (max-width:980px){
+      .videoCard{aspect-ratio: 16 / 9;}
     }
 
-    /* modal */
+    /* “Thumbnail” mode: video element is present but paused, user can play inline or expand */
+    video{
+      width:100%; height:100%; object-fit:cover; display:block; background:#000;
+    }
+
+    .overlayControls{
+      position:absolute; inset:0;
+      display:flex; align-items:flex-end; justify-content:space-between;
+      padding:12px;
+      pointer-events:none;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.00) 40%, rgba(0,0,0,.45));
+    }
+    .overlayLeft{
+      display:flex; gap:10px; align-items:center; pointer-events:auto;
+    }
+    .chip{
+      font-size:12px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.08);
+      color:var(--text);
+      backdrop-filter: blur(10px);
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      user-select:none;
+      display:inline-flex; align-items:center; gap:8px;
+    }
+    .chip:hover{transform:translateY(-1px); background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.20)}
+    .chip:active{transform:translateY(0px)}
+    .chipPrimary{background: rgba(71,214,179,.18); border-color: rgba(71,214,179,.28)}
+    .overlayRight{pointer-events:auto}
+
+    /* “Page” sections */
+    .page{display:none}
+    .page.active{display:block}
+
+    /* Slides page */
+    .slidesWrap{
+      margin-top:18px;
+      padding:18px;
+    }
+    .slidesTitle{
+      font-size:22px; margin:0 0 12px; letter-spacing:-.2px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 980px){ .grid{grid-template-columns: repeat(2, 1fr)} }
+    @media (max-width: 560px){ .grid{grid-template-columns: 1fr} }
+
+    .slide{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius:14px;
+      overflow:hidden;
+      cursor:pointer;
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+      position:relative;
+      aspect-ratio: 16/9;
+    }
+    .slide:hover{transform: translateY(-2px); border-color: rgba(71,214,179,.28); background: rgba(255,255,255,.06)}
+    .slide img{width:100%; height:100%; object-fit:cover; display:block}
+
+    /* Lightbox for slides */
     .modal{
       position:fixed; inset:0;
+      background: rgba(0,0,0,.72);
       display:none;
       align-items:center; justify-content:center;
-      padding:18px;
-      z-index:100;
+      padding:16px;
+      z-index:50;
     }
-    .modal.is-open{display:flex}
-    .backdrop{
-      position:absolute; inset:0;
-      background:rgba(0,0,0,.65);
-      backdrop-filter: blur(10px);
-    }
-    .panel{
-      position:relative;
-      width:min(980px, 100%);
-      border-radius:22px;
-      border:1px solid rgba(255,255,255,.16);
-      background:rgba(10,14,13,.92);
-      box-shadow:var(--shadow);
+    .modal.open{display:flex}
+    .modalBox{
+      width:min(1100px, 96vw);
+      max-height: 90vh;
+      border-radius: 18px;
       overflow:hidden;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(8,16,14,.92);
+      box-shadow: 0 30px 90px rgba(0,0,0,.65);
+      position:relative;
     }
-    .panelBar{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:12px;
+    .modalTop{
+      display:flex; justify-content:space-between; align-items:center;
       padding:12px 14px;
       border-bottom:1px solid rgba(255,255,255,.10);
+      color:var(--muted);
+      font-size:13px;
     }
-    .panelTitle{font-weight:950}
-    .iconBtn{
-      border:none;
-      background:rgba(255,255,255,.08);
+    .modalTop strong{color:var(--text)}
+    .modalClose{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
       color:var(--text);
-      font-weight:950;
-      border-radius:12px;
       padding:8px 10px;
+      border-radius:999px;
       cursor:pointer;
     }
-    .iconBtn:hover{background:rgba(255,255,255,.12)}
-    .panelBody{padding:0}
-    .modalVideoFrame{
-      width:100%;
-      aspect-ratio: 16 / 9;
+    .modalBody{
+      padding:0;
+      display:grid;
+      place-items:center;
       background:#000;
     }
-    .modalVideoFrame video{object-fit:contain}
-
-    .slideViewer{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:#000;
-      min-height: min(75vh, 820px);
-    }
-    .slideViewer img{
+    .modalBody img{
       width:100%;
       height:auto;
-      max-height:80vh;
+      max-height: calc(90vh - 52px);
       object-fit:contain;
       display:block;
     }
-    .panelNav{
-      display:flex; align-items:center; gap:8px;
+    .modalBody video{
+      width:100%;
+      height:auto;
+      max-height: calc(90vh - 52px);
+      object-fit:contain;
+      display:block;
+      background:#000;
     }
 
-    .footer{
-      margin-top:28px;
-      padding-top:16px;
-      border-top:1px solid rgba(255,255,255,.08);
+    /* Footer */
+    footer{
+      margin-top:26px;
       color:rgba(255,255,255,.55);
-      font-size:13px;
+      font-size:12px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.08);
     }
   </style>
 </head>
 
 <body>
-  <header class="topbar">
-    <a class="brand" href="index.html" aria-label="Home">
-      <img class="brand__logo" src="assets/img/lulidigital-logo.png" alt="LuliDigital"
-           onerror="this.style.display='none'; document.getElementById('brandFallback').style.display='block';" />
-      <div id="brandFallback" style="display:none">
-        <div class="brand__name">LuliDigital</div>
-        <div class="brand__sub">Marketing Strategy • TayoPay</div>
-      </div>
-      <div>
-        <div class="brand__name">LuliDigital</div>
-        <div class="brand__sub">Marketing Strategy • TayoPay</div>
-      </div>
-    </a>
+  <div class="wrap">
 
-    <nav class="nav">
-      <a href="#video">Video</a>
-      <a href="#slides">Slides</a>
-      <a href="assets/strategy.pdf" target="_blank" rel="noopener">PDF</a>
-    </nav>
-  </header>
-
-  <main class="container">
-    <section class="hero" id="video">
-      <!-- LEFT -->
-      <div class="fadeInUp">
-        <div class="pill">90-day GTM • Growth loops • Execution plan</div>
-
-        <h1>
-          Marketing Strategy for<br />
-          <span class="accent">TayoPay</span>
-        </h1>
-
-        <p class="subline">
-          <span class="typewrap">
-            <span id="typeTarget"></span><span class="cursor" aria-hidden="true"></span>
-          </span>
-        </p>
-
-        <div class="ctaRow">
-          <a class="btn btn--primary" href="#slides">Strategy walkthrough (slides)</a>
-          <a class="btn" href="assets/strategy.pdf" target="_blank" rel="noopener">Open PDF</a>
-          <a class="btn" href="assets/strategy.pdf" download>Download PDF</a>
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <a class="brand" href="#home" data-nav="home" aria-label="Go to home">
+        <div class="logo">
+          <!-- Try img path 1; if missing, auto-fallback to path 2 -->
+          <img src="assets/img/lulidigital-logo.png"
+               onerror="this.onerror=null;this.src='assets/logo/lulidigital-logo.png';"
+               alt="LuliDigital logo">
         </div>
-
-        <div class="metaCards">
-          <div class="card">
-            <div class="card__label">Deliverable</div>
-            <div class="card__value">Strategy + slide walkthrough + demo video</div>
-          </div>
-          <div class="card">
-            <div class="card__label">Prepared by</div>
-            <div class="card__value">LuliDigital Agency</div>
-          </div>
+        <div class="brandText">
+          <div class="name">LuliDigital</div>
+          <div class="sub">Marketing Strategy • TayoPay</div>
         </div>
-      </div>
+      </a>
 
-      <!-- RIGHT -->
-      <div class="videoCard fadeInUp" style="animation-delay:.08s">
-        <div class="videoTop">
-          <div class="videoTitle">Product demo (video)</div>
-          <button class="linkBtn" id="expandVideoBtn" type="button">Expand</button>
-        </div>
-
-        <!-- Small reels-style player (does NOT auto expand) -->
-        <div class="reelFrame" aria-label="Video player">
-          <video id="heroVideo" controls playsinline preload="metadata">
-            <source src="assets/video/tayopay-intro-1080.mp4" type="video/mp4" />
-          </video>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDES -->
-    <section class="section" id="slides">
-      <div class="sectionHead">
-        <h2 class="h2">Strategy walkthrough (slides)</h2>
-        <a class="btn btn--primary" href="assets/strategy.pdf" download>Download slides (PDF)</a>
-      </div>
-
-      <div class="slidesGrid" id="slidesGrid" aria-label="Slides"></div>
-    </section>
-
-    <footer class="footer">
-      <div>© 2026 LuliDigital • Marketing Strategy for TayoPay</div>
-    </footer>
-  </main>
-
-  <!-- VIDEO MODAL -->
-  <div class="modal" id="videoModal" aria-hidden="true">
-    <div class="backdrop" id="videoBackdrop"></div>
-    <div class="panel" role="dialog" aria-modal="true" aria-label="Expanded video">
-      <div class="panelBar">
-        <div class="panelTitle">Product demo</div>
-        <button class="iconBtn" id="closeVideoBtn" type="button" aria-label="Close">✕</button>
-      </div>
-      <div class="panelBody">
-        <div class="modalVideoFrame">
-          <video id="modalVideo" controls playsinline preload="metadata">
-            <source src="assets/video/tayopay-intro-1080.mp4" type="video/mp4" />
-          </video>
-        </div>
-      </div>
+      <nav class="nav" aria-label="Site navigation">
+        <a href="#home" data-nav="home" class="active">Home</a>
+        <a href="#slides" data-nav="slides">Slides</a>
+      </nav>
     </div>
+
+    <!-- HOME PAGE -->
+    <section id="home" class="page active" aria-label="Home">
+      <div class="hero">
+        <!-- LEFT -->
+        <div class="panel left">
+          <div class="pill">90-day GTM • Growth loops • Execution plan</div>
+
+          <div class="h1">
+            Marketing Strategy for <span class="accent">TayoPay</span>
+          </div>
+
+          <p class="desc" aria-live="polite">
+            <span id="typing" class="typing"></span>
+          </p>
+
+          <div class="actions">
+            <!-- “Different page” without a second file: uses #slides routing -->
+            <a class="btn btnPrimary btnPulse" href="#slides" data-nav="slides">
+              👉 Open strategy walkthrough (slides)
+            </a>
+
+            <!-- Download slides (PDF). IMPORTANT: your repo shows assets/strategy.pdf -->
+            <a class="btn" href="assets/strategy.pdf" download>
+              Download slides
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT (VIDEO) -->
+        <div class="panel right" aria-label="Video panel">
+          <div class="vHeader">
+            <div class="vTitle">Product demo (video)</div>
+            <div class="vHint">Play here or expand</div>
+          </div>
+
+          <div class="videoCard">
+            <!-- IMPORTANT: your repo shows assets/video/ exists. Put the new file there. -->
+            <video id="heroVideo"
+                   preload="metadata"
+                   playsinline
+                   controlslist="nodownload noplaybackrate"
+                   src="assets/video/tayopay-intro-1080.mp4"></video>
+
+            <div class="overlayControls">
+              <div class="overlayLeft">
+                <button class="chip chipPrimary" id="playInlineBtn" type="button">▶ Play</button>
+                <button class="chip" id="pauseInlineBtn" type="button" style="display:none;">⏸ Pause</button>
+              </div>
+              <div class="overlayRight">
+                <button class="chip" id="expandBtn" type="button">⤢ Expand</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>© 2026 LuliDigital • Marketing Strategy for TayoPay</footer>
+    </section>
+
+    <!-- SLIDES PAGE (same HTML, “different page” via routing) -->
+    <section id="slides" class="page" aria-label="Slides">
+      <div class="panel slidesWrap">
+        <h2 class="slidesTitle">Strategy walkthrough (slides)</h2>
+
+        <!-- Thumbnails load only when you open Slides page (better speed) -->
+        <div id="slidesGrid" class="grid" aria-label="Slide thumbnails"></div>
+
+        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn btnPrimary" href="assets/strategy.pdf" download>Download slides</a>
+          <a class="btn" href="#home" data-nav="home">Back to home</a>
+        </div>
+      </div>
+
+      <footer>© 2026 LuliDigital • Marketing Strategy for TayoPay</footer>
+    </section>
+
   </div>
 
-  <!-- SLIDE VIEWER MODAL -->
-  <div class="modal" id="slideModal" aria-hidden="true">
-    <div class="backdrop" id="slideBackdrop"></div>
-    <div class="panel" role="dialog" aria-modal="true" aria-label="Slide viewer">
-      <div class="panelBar">
-        <div class="panelTitle" id="slideTitle">Slide</div>
-        <div class="panelNav">
-          <button class="iconBtn" id="prevSlideBtn" type="button" aria-label="Previous">‹</button>
-          <button class="iconBtn" id="nextSlideBtn" type="button" aria-label="Next">›</button>
-          <button class="iconBtn" id="closeSlideBtn" type="button" aria-label="Close">✕</button>
-        </div>
+  <!-- MODAL (used for BOTH: video expand + slide preview) -->
+  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-label="Preview modal">
+    <div class="modalBox">
+      <div class="modalTop">
+        <div><strong id="modalTitle">Preview</strong></div>
+        <button class="modalClose" id="modalClose" type="button">Close</button>
       </div>
-      <div class="slideViewer">
-        <img id="slideImage" alt="Slide" />
-      </div>
+      <div class="modalBody" id="modalBody"></div>
     </div>
   </div>
 
   <script>
-    // ========= EDIT THESE 2 VALUES =========
-    const SLIDES = {
-      path: "assets/slides/",
-      prefix: "slide_",
-      ext: "png",  // change to "jpg" if your slides are .jpg
-      count: 18    // set to your real number of slides
+    // -----------------------------
+    // 1) Animated description (typewriter)
+    // -----------------------------
+    const lines = [
+      "A 90-day GTM plan built for Africa & Asia remittance corridors — execution-ready.",
+      "Clear positioning, full-funnel channels, and a measurement plan your team can run immediately.",
+      "Watch the product demo, then open the slides for the full walkthrough."
+    ];
+    const typingEl = document.getElementById("typing");
+
+    let lineIdx = 0, charIdx = 0, deleting = false;
+    function tick(){
+      const current = lines[lineIdx];
+      if (!deleting) {
+        typingEl.textContent = current.slice(0, charIdx++);
+        if (charIdx > current.length + 18) deleting = true;
+      } else {
+        typingEl.textContent = current.slice(0, charIdx--);
+        if (charIdx <= 0) {
+          deleting = false;
+          lineIdx = (lineIdx + 1) % lines.length;
+          charIdx = 0;
+        }
+      }
+      const speed = deleting ? 22 : 18;
+      setTimeout(tick, speed);
+    }
+    tick();
+
+    // -----------------------------
+    // 2) Simple router (#home / #slides)
+    //    Loads slides only when needed (speed)
+    // -----------------------------
+    const pages = {
+      home: document.getElementById("home"),
+      slides: document.getElementById("slides"),
     };
-    // ======================================
+    const navLinks = document.querySelectorAll("[data-nav]");
+    let slidesLoaded = false;
 
-    // Typewriter animation (lightweight)
-    const text = "Built for Africa & Asia remittance corridors — execution-ready.";
-    const target = document.getElementById("typeTarget");
-    let i = 0;
-    (function type(){
-      if(i <= text.length){
-        target.textContent = text.slice(0, i++);
-        requestAnimationFrame(() => setTimeout(type, 18));
+    function setActiveNav(key){
+      navLinks.forEach(a => {
+        a.classList.toggle("active", a.getAttribute("data-nav") === key);
+      });
+    }
+
+    function showPage(key){
+      Object.keys(pages).forEach(k => pages[k].classList.toggle("active", k === key));
+      setActiveNav(key);
+
+      if (key === "slides" && !slidesLoaded) {
+        loadSlides();
+        slidesLoaded = true;
       }
-    })();
-
-    // Build slides grid (lazy load)
-    const grid = document.getElementById("slidesGrid");
-    const slides = [];
-    for (let n = 1; n <= SLIDES.count; n++) {
-      const src = `${SLIDES.path}${SLIDES.prefix}${n}.${SLIDES.ext}`;
-      slides.push(src);
-
-      const card = document.createElement("button");
-      card.className = "slideCard";
-      card.type = "button";
-      card.setAttribute("aria-label", `Open slide ${n}`);
-
-      const badge = document.createElement("div");
-      badge.className = "slideBadge";
-      badge.textContent = `Slide ${n}`;
-      card.appendChild(badge);
-
-      const img = document.createElement("img");
-      img.className = "slideImg";
-      img.loading = "lazy";
-      img.decoding = "async";
-      img.src = src;
-      img.alt = `Slide ${n}`;
-      card.appendChild(img);
-
-      card.addEventListener("click", () => openSlide(n - 1));
-      grid.appendChild(card);
     }
 
-    // Slide modal controls
-    const slideModal = document.getElementById("slideModal");
-    const slideBackdrop = document.getElementById("slideBackdrop");
-    const slideImage = document.getElementById("slideImage");
-    const slideTitle = document.getElementById("slideTitle");
-    const prevSlideBtn = document.getElementById("prevSlideBtn");
-    const nextSlideBtn = document.getElementById("nextSlideBtn");
-    const closeSlideBtn = document.getElementById("closeSlideBtn");
-    let currentSlide = 0;
+    function route(){
+      const hash = (location.hash || "#home").replace("#","");
+      const key = pages[hash] ? hash : "home";
+      showPage(key);
+      // Stop video when leaving home (keeps things light)
+      if (key !== "home") {
+        try { heroVideo.pause(); } catch(e){}
+        playInlineBtn.style.display = "inline-flex";
+        pauseInlineBtn.style.display = "none";
+      }
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+    window.addEventListener("hashchange", route);
+    route();
 
-    function openSlide(idx){
-      currentSlide = idx;
-      slideTitle.textContent = `Slide ${idx + 1}`;
-      slideImage.src = slides[idx];
-      slideModal.classList.add("is-open");
-      slideModal.setAttribute("aria-hidden","false");
-    }
-    function closeSlide(){
-      slideModal.classList.remove("is-open");
-      slideModal.setAttribute("aria-hidden","true");
-    }
-    function prevSlide(){
-      openSlide((currentSlide - 1 + slides.length) % slides.length);
-    }
-    function nextSlide(){
-      openSlide((currentSlide + 1) % slides.length);
-    }
-    slideBackdrop.addEventListener("click", closeSlide);
-    closeSlideBtn.addEventListener("click", closeSlide);
-    prevSlideBtn.addEventListener("click", prevSlide);
-    nextSlideBtn.addEventListener("click", nextSlide);
-
-    // Video modal (expand only when user clicks)
-    const expandVideoBtn = document.getElementById("expandVideoBtn");
-    const videoModal = document.getElementById("videoModal");
-    const videoBackdrop = document.getElementById("videoBackdrop");
-    const closeVideoBtn = document.getElementById("closeVideoBtn");
+    // -----------------------------
+    // 3) Video: play inline OR expand modal
+    // -----------------------------
     const heroVideo = document.getElementById("heroVideo");
-    const modalVideo = document.getElementById("modalVideo");
+    const playInlineBtn = document.getElementById("playInlineBtn");
+    const pauseInlineBtn = document.getElementById("pauseInlineBtn");
+    const expandBtn = document.getElementById("expandBtn");
 
-    function openVideoModal(){
-      // sync time for smooth experience
-      modalVideo.currentTime = heroVideo.currentTime || 0;
-      modalVideo.play().catch(()=>{});
-      videoModal.classList.add("is-open");
-      videoModal.setAttribute("aria-hidden","false");
-    }
-    function closeVideoModal(){
-      modalVideo.pause();
-      // sync back (optional)
-      heroVideo.currentTime = modalVideo.currentTime || heroVideo.currentTime || 0;
-      videoModal.classList.remove("is-open");
-      videoModal.setAttribute("aria-hidden","true");
-    }
-    expandVideoBtn.addEventListener("click", openVideoModal);
-    videoBackdrop.addEventListener("click", closeVideoModal);
-    closeVideoBtn.addEventListener("click", closeVideoModal);
-
-    // ESC closes modals
-    window.addEventListener("keydown", (e) => {
-      if(e.key === "Escape"){
-        closeSlide();
-        closeVideoModal();
-      }
+    playInlineBtn.addEventListener("click", async () => {
+      try{
+        await heroVideo.play();
+        playInlineBtn.style.display = "none";
+        pauseInlineBtn.style.display = "inline-flex";
+      }catch(e){}
     });
+
+    pauseInlineBtn.addEventListener("click", () => {
+      heroVideo.pause();
+      playInlineBtn.style.display = "inline-flex";
+      pauseInlineBtn.style.display = "none";
+    });
+
+    // -----------------------------
+    // 4) Modal helpers (video expand + slide preview)
+    // -----------------------------
+    const modal = document.getElementById("modal");
+    const modalBody = document.getElementById("modalBody");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalClose = document.getElementById("modalClose");
+
+    function openModal({ title, node }){
+      modalTitle.textContent = title || "Preview";
+      modalBody.innerHTML = "";
+      modalBody.appendChild(node);
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden","false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal(){
+      // stop any playing video in modal
+      const v = modalBody.querySelector("video");
+      if (v) { try { v.pause(); } catch(e){} }
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden","true");
+      modalBody.innerHTML = "";
+      document.body.style.overflow = "";
+    }
+
+    modalClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+    window.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+
+    expandBtn.addEventListener("click", () => {
+      const v = document.createElement("video");
+      v.src = heroVideo.currentSrc || heroVideo.src;
+      v.controls = true;
+      v.autoplay = true;
+      v.playsInline = true;
+      v.preload = "metadata";
+      openModal({ title: "Product demo (video)", node: v });
+    });
+
+    // -----------------------------
+    // 5) Slides (lazy load on slides page)
+    //    IMPORTANT: set SLIDE_COUNT to match your assets/slides/ files.
+    //    This expects: assets/slides/slide_1.png, slide_2.png, ...
+    // -----------------------------
+    const SLIDE_COUNT = 13; // change this to your real count
+    const slidesGrid = document.getElementById("slidesGrid");
+
+    function loadSlides(){
+      const frag = document.createDocumentFragment();
+
+      for (let i = 1; i <= SLIDE_COUNT; i++){
+        const btn = document.createElement("button");
+        btn.className = "slide";
+        btn.type = "button";
+        btn.setAttribute("aria-label", "Open slide " + i);
+
+        const img = document.createElement("img");
+        img.loading = "lazy";
+        img.decoding = "async";
+        img.alt = "Slide " + i;
+        img.src = `assets/slides/slide_${i}.png`;
+
+        // If png doesn’t exist, try jpg automatically (your repo sometimes has thumbs as jpg)
+        img.onerror = () => { img.onerror = null; img.src = `assets/slides/slide_${i}.jpg`; };
+
+        btn.appendChild(img);
+
+        btn.addEventListener("click", () => {
+          const full = document.createElement("img");
+          full.alt = "Slide " + i;
+          full.src = img.src; // use whichever worked (png/jpg)
+          openModal({ title: "Slide " + i, node: full });
+        });
+
+        frag.appendChild(btn);
+      }
+
+      slidesGrid.appendChild(frag);
+    }
   </script>
 </body>
 </html>
