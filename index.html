@@ -8,8 +8,6 @@
     :root{
       --bg:#07110f;
       --bg2:#0b1c17;
-      --card:rgba(255,255,255,.06);
-      --stroke:rgba(255,255,255,.14);
       --text:rgba(255,255,255,.92);
       --muted:rgba(255,255,255,.70);
       --accent:#47d6b3;
@@ -55,24 +53,12 @@
     .brandText .name{font-weight:700; font-size:14px; letter-spacing:.2px}
     .brandText .sub{font-size:12px;color:var(--muted)}
 
-    .nav{
-      display:flex; align-items:center; gap:10px;
-      padding:6px 8px;
+    .panel{
       border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.04);
-      border-radius:999px;
-      backdrop-filter: blur(10px);
-    }
-    .nav a{
-      font-size:13px; color:var(--muted);
-      padding:8px 10px; border-radius:999px;
-      transition: transform .15s ease, background .15s ease, color .15s ease;
-    }
-    .nav a:hover{background:rgba(255,255,255,.06); color:var(--text); transform:translateY(-1px)}
-    .nav a.active{
-      color:var(--text);
-      background:rgba(71,214,179,.14);
-      border:1px solid rgba(71,214,179,.22)
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
+      border-radius:var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
     }
 
     /* Hero layout */
@@ -87,16 +73,7 @@
       .hero{grid-template-columns: 1fr;}
     }
 
-    .panel{
-      border:1px solid rgba(255,255,255,.10);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
-      border-radius:var(--radius2);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-
     .left{padding:22px 22px 18px; position:relative;}
-
     .pill{
       display:inline-flex; gap:8px; align-items:center;
       padding:7px 10px;
@@ -108,6 +85,7 @@
       letter-spacing:.2px;
       margin-bottom:10px;
     }
+
     .h1{
       font-size:54px;
       line-height:1.02;
@@ -123,7 +101,7 @@
       font-size:16px;
       line-height:1.55;
       max-width: 54ch;
-      min-height: 52px;
+      min-height: 56px;
     }
 
     /* Animated description (type + caret) */
@@ -139,41 +117,57 @@
     }
 
     .actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;}
+
     .btn{
       border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.06);
       color:var(--text);
       padding:11px 14px;
       border-radius:999px;
-      font-weight:600;
+      font-weight:700;
       font-size:14px;
       cursor:pointer;
       display:inline-flex; align-items:center; justify-content:center;
       gap:10px;
       transition: transform .15s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
       user-select:none;
+      position:relative;
+      overflow:hidden;
+      will-change: transform;
     }
     .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18)}
     .btn:active{transform: translateY(0px)}
+
     .btnPrimary{
       background: rgba(71,214,179,.16);
       border-color: rgba(71,214,179,.26);
       box-shadow: 0 10px 30px rgba(71,214,179,.10);
     }
-    .btnPulse{position:relative; overflow:hidden;}
-    .btnPulse::after{
+
+    /* Button animation: sheen + soft pulse */
+    .btnSheen::after{
       content:"";
-      position:absolute; inset:-40%;
-      background: radial-gradient(circle at 20% 20%, rgba(156,243,223,.22), transparent 45%),
-                  radial-gradient(circle at 80% 60%, rgba(71,214,179,.18), transparent 45%);
-      transform: translateX(-30%) rotate(8deg);
+      position:absolute; inset:-45%;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(156,243,223,.24), transparent 45%),
+        radial-gradient(circle at 80% 60%, rgba(71,214,179,.18), transparent 45%);
+      transform: translateX(-35%) rotate(10deg);
       animation: sheen 2.8s ease-in-out infinite;
       pointer-events:none;
+      opacity:.35;
     }
     @keyframes sheen{
-      0%{opacity:.25; transform: translateX(-35%) rotate(8deg)}
-      50%{opacity:.55; transform: translateX(5%) rotate(8deg)}
-      100%{opacity:.25; transform: translateX(-35%) rotate(8deg)}
+      0%{transform: translateX(-38%) rotate(10deg); opacity:.25}
+      50%{transform: translateX(6%) rotate(10deg); opacity:.60}
+      100%{transform: translateX(-38%) rotate(10deg); opacity:.25}
+    }
+
+    .btnPulseAnim{
+      animation: btnPulse 2.4s ease-in-out infinite;
+    }
+    @keyframes btnPulse{
+      0%, 100%{ box-shadow: 0 10px 30px rgba(71,214,179,.10) }
+      50%{ box-shadow: 0 18px 46px rgba(71,214,179,.18) }
     }
 
     /* Right video card */
@@ -184,7 +178,7 @@
       color:var(--muted);
       font-size:13px;
     }
-    .vTitle{color:var(--text); font-weight:700}
+    .vTitle{color:var(--text); font-weight:800}
     .vHint{opacity:.9}
 
     .videoCard{
@@ -230,31 +224,6 @@
     .chipPrimary{background: rgba(71,214,179,.18); border-color: rgba(71,214,179,.28)}
     .overlayRight{pointer-events:auto}
 
-    /* “Page” sections */
-    .page{display:none}
-    .page.active{display:block}
-
-    /* Slides page */
-    .slidesWrap{margin-top:18px; padding:18px;}
-    .slidesTitle{font-size:22px; margin:0 0 12px; letter-spacing:-.2px;}
-    .grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px;}
-    @media (max-width: 980px){ .grid{grid-template-columns: repeat(2, 1fr)} }
-    @media (max-width: 560px){ .grid{grid-template-columns: 1fr} }
-
-    .slide{
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      border-radius:14px;
-      overflow:hidden;
-      cursor:pointer;
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
-      position:relative;
-      aspect-ratio: 16/9;
-      padding:0;
-    }
-    .slide:hover{transform: translateY(-2px); border-color: rgba(71,214,179,.28); background: rgba(255,255,255,.06)}
-    .slide img{width:100%; height:100%; object-fit:cover; display:block}
-
     /* Modal */
     .modal{
       position:fixed; inset:0;
@@ -297,7 +266,7 @@
       place-items:center;
       background:#000;
     }
-    .modalBody img, .modalBody video{
+    .modalBody video{
       width:100%;
       height:auto;
       max-height: calc(90vh - 52px);
@@ -321,7 +290,7 @@
 
     <!-- TOP BAR -->
     <div class="topbar">
-      <a class="brand" href="#home" data-nav="home" aria-label="Go to home">
+      <a class="brand" href="#" aria-label="Home">
         <div class="logo">
           <img src="assets/img/lulidigital-logo.png"
                onerror="this.onerror=null;this.src='assets/logo/lulidigital-logo.png';"
@@ -332,15 +301,10 @@
           <div class="sub">Marketing Strategy • TayoPay</div>
         </div>
       </a>
-
-      <nav class="nav" aria-label="Site navigation">
-        <a href="#home" data-nav="home" class="active">Home</a>
-        <a href="#slides" data-nav="slides">Slides</a>
-      </nav>
     </div>
 
-    <!-- HOME PAGE -->
-    <section id="home" class="page active" aria-label="Home">
+    <!-- HERO -->
+    <section aria-label="Home">
       <div class="hero">
 
         <!-- LEFT -->
@@ -356,12 +320,18 @@
           </p>
 
           <div class="actions">
-            <a class="btn btnPrimary btnPulse" href="#slides" data-nav="slides">
+            <!-- OPEN = CANVA LINK (no PDF routing) -->
+            <a class="btn btnPrimary btnSheen btnPulseAnim"
+               href="CANVA_PUBLIC_LINK_HERE"
+               target="_blank"
+               rel="noopener">
               👉 Open strategy walkthrough (slides)
             </a>
 
-            <!-- use the COMPRESSED PDF -->
-            <a class="btn" href="assets/strategy-compressed.pdf" download>
+            <!-- KEEP DOWNLOAD (compressed PDF) -->
+            <a class="btn btnSheen"
+               href="assets/strategy-compressed.pdf"
+               download>
               Download slides
             </a>
           </div>
@@ -399,30 +369,13 @@
       <footer>© 2026 LuliDigital • Marketing Strategy for TayoPay</footer>
     </section>
 
-    <!-- SLIDES PAGE -->
-    <section id="slides" class="page" aria-label="Slides">
-      <div class="panel slidesWrap">
-        <h2 class="slidesTitle">Strategy walkthrough (slides)</h2>
-
-        <!-- Thumbnails load only when you open Slides page -->
-        <div id="slidesGrid" class="grid" aria-label="Slide thumbnails"></div>
-
-        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn btnPrimary" href="assets/strategy-compressed.pdf" download>Download slides</a>
-          <a class="btn" href="#home" data-nav="home">Back to home</a>
-        </div>
-      </div>
-
-      <footer>© 2026 LuliDigital • Marketing Strategy for TayoPay</footer>
-    </section>
-
   </div>
 
-  <!-- MODAL -->
-  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-label="Preview modal">
+  <!-- MODAL (video expand) -->
+  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-label="Video modal">
     <div class="modalBox">
       <div class="modalTop">
-        <div><strong id="modalTitle">Preview</strong></div>
+        <div><strong id="modalTitle">Product demo (video)</strong></div>
         <button class="modalClose" id="modalClose" type="button">Close</button>
       </div>
       <div class="modalBody" id="modalBody"></div>
@@ -431,7 +384,7 @@
 
   <script>
     // -----------------------------
-    // 1) Animated description (relevant + clean)
+    // 1) Animated description (typewriter)
     // -----------------------------
     const lines = [
       "A 90-day GTM plan built for Africa & Asia remittance corridors — execution-ready.",
@@ -459,47 +412,7 @@
     tick();
 
     // -----------------------------
-    // 2) Router (#home / #slides) + lazy slides load
-    // -----------------------------
-    const pages = {
-      home: document.getElementById("home"),
-      slides: document.getElementById("slides"),
-    };
-    const navLinks = document.querySelectorAll("[data-nav]");
-    let slidesLoaded = false;
-
-    function setActiveNav(key){
-      navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("data-nav") === key));
-    }
-
-    function showPage(key){
-      Object.keys(pages).forEach(k => pages[k].classList.toggle("active", k === key));
-      setActiveNav(key);
-
-      if (key === "slides" && !slidesLoaded) {
-        loadSlides();
-        slidesLoaded = true;
-      }
-
-      // keep it light: stop video when leaving home
-      if (key !== "home") {
-        try { heroVideo.pause(); } catch(e){}
-        playInlineBtn.style.display = "inline-flex";
-        pauseInlineBtn.style.display = "none";
-      }
-
-      window.scrollTo({ top: 0, behavior: "instant" });
-    }
-
-    function route(){
-      const hash = (location.hash || "#home").replace("#","");
-      showPage(pages[hash] ? hash : "home");
-    }
-    window.addEventListener("hashchange", route);
-    route();
-
-    // -----------------------------
-    // 3) Video: lazy-load source only on user action
+    // 2) Video: lazy-load source only on user action
     // -----------------------------
     const heroVideo = document.getElementById("heroVideo");
     const playInlineBtn = document.getElementById("playInlineBtn");
@@ -529,15 +442,13 @@
     });
 
     // -----------------------------
-    // 4) Modal helpers
+    // 3) Modal (expand video)
     // -----------------------------
     const modal = document.getElementById("modal");
     const modalBody = document.getElementById("modalBody");
-    const modalTitle = document.getElementById("modalTitle");
     const modalClose = document.getElementById("modalClose");
 
-    function openModal({ title, node }){
-      modalTitle.textContent = title || "Preview";
+    function openModal(node){
       modalBody.innerHTML = "";
       modalBody.appendChild(node);
       modal.classList.add("open");
@@ -565,62 +476,8 @@
       v.playsInline = true;
       v.preload = "metadata";
       v.src = heroVideo.getAttribute("src") || heroVideo.getAttribute("data-src");
-      openModal({ title: "Product demo (video)", node: v });
+      openModal(v);
     });
-
-    // -----------------------------
-    // 5) Slides: use THUMBS for speed, full slide on click
-    //    Repo you showed: assets/slides/ and assets/slides/thumbs/
-    // -----------------------------
-    const SLIDE_COUNT = 13; // set to your real count
-    const slidesGrid = document.getElementById("slidesGrid");
-
-    function loadSlides(){
-      const frag = document.createDocumentFragment();
-
-      for (let i = 1; i <= SLIDE_COUNT; i++){
-        const btn = document.createElement("button");
-        btn.className = "slide";
-        btn.type = "button";
-        btn.setAttribute("aria-label", "Open slide " + i);
-
-        const img = document.createElement("img");
-        img.loading = "lazy";
-        img.decoding = "async";
-        img.alt = "Slide " + i;
-
-        // THUMB FIRST (fast)
-        img.src = `assets/slides/thumbs/slide_${i}.jpg`;
-
-        // thumb fallback(s)
-        img.onerror = () => {
-          img.onerror = null;
-          img.src = `assets/slides/thumbs/slide_${i}.png`;
-        };
-
-        btn.appendChild(img);
-
-        btn.addEventListener("click", () => {
-          const full = document.createElement("img");
-          full.alt = "Slide " + i;
-
-          // FULL FIRST (best quality)
-          full.src = `assets/slides/slide_${i}.png`;
-
-          // full fallback(s)
-          full.onerror = () => {
-            full.onerror = null;
-            full.src = `assets/slides/slide_${i}.jpg`;
-          };
-
-          openModal({ title: "Slide " + i, node: full });
-        });
-
-        frag.appendChild(btn);
-      }
-
-      slidesGrid.appendChild(frag);
-    }
   </script>
 </body>
 </html>
