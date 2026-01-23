@@ -2,60 +2,211 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Marketing Strategy for TayoPay</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <title>Marketing Strategy for TayoPay · LuliDigital</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg: #0b0f0e;
+      --card: #101615;
+      --text: #e6f1ec;
+      --muted: #9fb3ab;
+      --accent: #4fd1a5;
+      --border: rgba(255,255,255,.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+      background: radial-gradient(1200px 600px at 30% 10%, #13221c, #0b0f0e);
+      color: var(--text);
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 24px 32px;
+    }
+
+    header img {
+      height: 34px;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 32px 80px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(79,209,165,.15);
+      color: var(--accent);
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 46px;
+      line-height: 1.1;
+      margin: 0 0 12px;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .desc {
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 16px;
+      animation: fadeUp .6s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #052018;
+      border: none;
+      font-weight: 600;
+    }
+
+    /* VIDEO */
+    .video-card {
+      margin-top: 48px;
+      max-width: 420px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* SLIDES */
+    .slides {
+      margin-top: 64px;
+    }
+
+    .slides h2 {
+      margin-bottom: 16px;
+      font-size: 22px;
+    }
+
+    .slide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .slide-grid img {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #000;
+    }
+
+    .download-slides {
+      margin-top: 20px;
+    }
+
+    footer {
+      margin-top: 80px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
 </head>
+
 <body>
 
-<header class="top">
-  <div class="brand">LuliDigital</div>
-  <nav>
-    <a href="#video">Video</a>
-    <a href="#slides">Slides</a>
-    <a href="assets/pdf/tayopay-strategy.pdf" target="_blank">PDF</a>
-  </nav>
+<header>
+  <img src="assets/img/lulidigital-logo.png" alt="LuliDigital logo">
+  <strong>LuliDigital</strong>
 </header>
 
-<main class="hero">
-  <span class="tag">90-day GTM · Growth loops · Execution plan</span>
+<main>
+
+  <span class="badge">90-day GTM · Growth loops · Execution plan</span>
+
   <h1>Marketing Strategy for <span>TayoPay</span></h1>
-  <p>Built for Africa & Asia remittance corridors — execution-ready.</p>
+
+  <p class="desc">
+    Built for Africa & Asia remittance corridors — execution-ready.
+  </p>
 
   <div class="actions">
-    <a href="#slides" class="btn primary">Strategy walkthrough (slides)</a>
-    <a href="assets/pdf/tayopay-strategy.pdf" target="_blank" class="btn">Open PDF</a>
-    <a href="assets/pdf/tayopay-strategy.pdf" download class="btn">Download PDF</a>
+    <a class="btn primary" href="#slides">Strategy walkthrough (slides)</a>
+    <a class="btn" href="assets/strategy.pdf" target="_blank">Open PDF</a>
+    <a class="btn" href="assets/strategy.pdf" download>Download PDF</a>
   </div>
+
+  <!-- VIDEO -->
+  <div class="video-card">
+    <video
+      controls
+      preload="metadata"
+      poster=""
+    >
+      <source src="assets/video/tayopay-intro-1080.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- SLIDES -->
+  <section class="slides" id="slides">
+    <h2>Strategy walkthrough (slides)</h2>
+
+    <div class="slide-grid">
+      <img src="assets/slides/slide_1.png" alt="Slide 1">
+      <img src="assets/slides/slide_2.png" alt="Slide 2">
+      <img src="assets/slides/slide_3.png" alt="Slide 3">
+      <img src="assets/slides/slide_4.png" alt="Slide 4">
+      <img src="assets/slides/slide_5.png" alt="Slide 5">
+      <img src="assets/slides/slide_6.png" alt="Slide 6">
+    </div>
+
+    <div class="download-slides">
+      <a class="btn" href="assets/strategy.pdf" download>Download slides (PDF)</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 LuliDigital · Marketing Strategy for TayoPay
+  </footer>
+
 </main>
 
-<!-- VIDEO -->
-<section id="video" class="video-section">
-  <div class="video-card" id="videoCard">
-    <div class="play">▶</div>
-  </div>
-</section>
-
-<!-- VIDEO MODAL -->
-<div class="video-modal" id="videoModal">
-  <video controls>
-    <source src="assets/video/tayopay-intro-1080.mp4" type="video/mp4">
-  </video>
-</div>
-
-<!-- SLIDES -->
-<section id="slides" class="slides">
-  <h2>Strategy walkthrough</h2>
-  <div class="grid">
-    <img src="assets/slides/slide-1.jpg" />
-    <img src="assets/slides/slide-2.jpg" />
-    <img src="assets/slides/slide-3.jpg" />
-    <img src="assets/slides/slide-4.jpg" />
-    <img src="assets/slides/slide-5.jpg" />
-    <img src="assets/slides/slide-6.jpg" />
-  </div>
-</section>
-
-<script src="script.js"></script>
 </body>
 </html>
