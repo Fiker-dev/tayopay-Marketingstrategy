@@ -1,121 +1,61 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TayoPay Marketing Strategy • LuliDigital</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Marketing Strategy for TayoPay</title>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
-
 <body>
-  <header class="topbar">
-    <div class="brand">
-      <img class="logo" src="assets/lulidigital-logo.png" alt="LuliDigital logo" />
-      <div class="brand-text">
-        <div class="brand-name">LuliDigital</div>
-        <div class="brand-sub">Marketing Strategy • TayoPay</div>
-      </div>
-    </div>
 
-    <nav class="nav">
-      <button class="nav-btn is-active" data-tab="video">Video</button>
-      <button class="nav-btn" data-tab="slides">Slides</button>
-      <button class="nav-btn" data-tab="pdf">PDF</button>
-    </nav>
-  </header>
+<header class="top">
+  <div class="brand">LuliDigital</div>
+  <nav>
+    <a href="#video">Video</a>
+    <a href="#slides">Slides</a>
+    <a href="assets/pdf/tayopay-strategy.pdf" target="_blank">PDF</a>
+  </nav>
+</header>
 
-  <main class="wrap">
-    <section class="hero">
-      <div class="hero-left">
-        <div class="pill">90-day GTM • Growth loops • Execution plan</div>
-        <h1>Marketing Strategy for <span class="accent">TayoPay</span></h1>
-        <p class="sub">Built for Africa &amp; Asia remittance corridors — execution-ready.</p>
+<main class="hero">
+  <span class="tag">90-day GTM · Growth loops · Execution plan</span>
+  <h1>Marketing Strategy for <span>TayoPay</span></h1>
+  <p>Built for Africa & Asia remittance corridors — execution-ready.</p>
 
-        <div class="cta">
-          <button class="btn btn-primary" data-jump="slides">👉 Strategy walkthrough (slides)</button>
-
-          <a class="btn" href="assets/pdf/tayopay-strategy.pdf" target="_blank" rel="noopener">
-            Open PDF
-          </a>
-
-          <a class="btn" href="assets/pdf/tayopay-strategy.pdf" download>
-            Download PDF
-          </a>
-        </div>
-      </div>
-
-      <div class="hero-right">
-        <div class="card">
-          <div class="card-head">
-            <div class="card-title">Product demo (video)</div>
-            <div class="card-hint">Click to expand</div>
-          </div>
-
-          <!-- Keep the on-page player small; expand via modal -->
-          <div class="video-shell" id="videoThumb" role="button" tabindex="0" aria-label="Open video fullscreen">
-            <video
-              id="demoVideo"
-              class="video"
-              src="assets/video/tayopay-intro-1080.mp4"
-              preload="metadata"
-              playsinline
-              controls
-            ></video>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TABS -->
-    <section class="tabs">
-      <div class="tab is-active" id="tab-video">
-        <div class="section-title">Video</div>
-        <p class="muted">Click the video above to expand. (It stays lightweight on load.)</p>
-      </div>
-
-      <div class="tab" id="tab-slides">
-        <div class="section-title">Strategy walkthrough</div>
-        <p class="muted">Slides load as small thumbnails first (fast). Click a slide to view large.</p>
-
-        <div class="grid" id="slidesGrid"></div>
-      </div>
-
-      <div class="tab" id="tab-pdf">
-        <div class="section-title">Strategy PDF</div>
-
-        <div class="pdf-actions">
-          <a class="btn btn-primary" href="assets/pdf/tayopay-strategy.pdf" target="_blank" rel="noopener">Open Strategy PDF</a>
-          <a class="btn" href="assets/pdf/tayopay-strategy.pdf" download>Download PDF</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- VIDEO MODAL (YouTube-style expand) -->
-  <div class="modal" id="videoModal" aria-hidden="true">
-    <div class="modal-backdrop" data-close="video"></div>
-    <div class="modal-card">
-      <button class="modal-close" data-close="video" aria-label="Close">✕</button>
-      <video
-        id="videoModalPlayer"
-        class="modal-video"
-        src="assets/video/tayopay-intro-1080.mp4"
-        controls
-        playsinline
-        preload="auto"
-      ></video>
-    </div>
+  <div class="actions">
+    <a href="#slides" class="btn primary">Strategy walkthrough (slides)</a>
+    <a href="assets/pdf/tayopay-strategy.pdf" target="_blank" class="btn">Open PDF</a>
+    <a href="assets/pdf/tayopay-strategy.pdf" download class="btn">Download PDF</a>
   </div>
+</main>
 
-  <!-- SLIDE MODAL -->
-  <div class="modal" id="slideModal" aria-hidden="true">
-    <div class="modal-backdrop" data-close="slide"></div>
-    <div class="modal-card modal-card--img">
-      <button class="modal-close" data-close="slide" aria-label="Close">✕</button>
-      <img id="slideModalImg" class="modal-img" alt="Slide preview" />
-    </div>
+<!-- VIDEO -->
+<section id="video" class="video-section">
+  <div class="video-card" id="videoCard">
+    <div class="play">▶</div>
   </div>
+</section>
 
-  <script src="app.js"></script>
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="videoModal">
+  <video controls>
+    <source src="assets/video/tayopay-intro-1080.mp4" type="video/mp4">
+  </video>
+</div>
+
+<!-- SLIDES -->
+<section id="slides" class="slides">
+  <h2>Strategy walkthrough</h2>
+  <div class="grid">
+    <img src="assets/slides/slide-1.jpg" />
+    <img src="assets/slides/slide-2.jpg" />
+    <img src="assets/slides/slide-3.jpg" />
+    <img src="assets/slides/slide-4.jpg" />
+    <img src="assets/slides/slide-5.jpg" />
+    <img src="assets/slides/slide-6.jpg" />
+  </div>
+</section>
+
+<script src="script.js"></script>
 </body>
 </html>
