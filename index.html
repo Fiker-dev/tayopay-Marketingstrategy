@@ -224,7 +224,7 @@
     .chipPrimary{background: rgba(71,214,179,.18); border-color: rgba(71,214,179,.28)}
     .overlayRight{pointer-events:auto}
 
-    /* Modal */
+    /* Modal (video expand) */
     .modal{
       position:fixed; inset:0;
       background: rgba(0,0,0,.72);
@@ -320,9 +320,9 @@
           </p>
 
           <div class="actions">
-            <!-- OPEN = CANVA LINK (no PDF routing) -->
+            <!-- OPEN = CANVA LINK -->
             <a class="btn btnPrimary btnSheen btnPulseAnim"
-               href="CANVA_PUBLIC_LINK_HERE"
+               href="https://www.canva.com/design/DAG_Jaj-p5o/decvSlkOgyjEyAFmm9rl_w/edit?utm_content=DAG_Jaj-p5o&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
                target="_blank"
                rel="noopener">
               👉 Open strategy walkthrough (slides)
@@ -383,9 +383,7 @@
   </div>
 
   <script>
-    // -----------------------------
     // 1) Animated description (typewriter)
-    // -----------------------------
     const lines = [
       "A 90-day GTM plan built for Africa & Asia remittance corridors — execution-ready.",
       "Positioning, channels, and an execution roadmap designed to drive measurable growth.",
@@ -411,9 +409,7 @@
     }
     tick();
 
-    // -----------------------------
     // 2) Video: lazy-load source only on user action
-    // -----------------------------
     const heroVideo = document.getElementById("heroVideo");
     const playInlineBtn = document.getElementById("playInlineBtn");
     const pauseInlineBtn = document.getElementById("pauseInlineBtn");
@@ -441,9 +437,7 @@
       pauseInlineBtn.style.display = "none";
     });
 
-    // -----------------------------
     // 3) Modal (expand video)
-    // -----------------------------
     const modal = document.getElementById("modal");
     const modalBody = document.getElementById("modalBody");
     const modalClose = document.getElementById("modalClose");
