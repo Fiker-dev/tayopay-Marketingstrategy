@@ -4,53 +4,387 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>TayoPay Marketing Strategy • LuliDigital</title>
-  <meta name="description" content="Marketing strategy deliverables for TayoPay: slides, PDF, and product demo video." />
-  <link rel="preload" href="styles.css" as="style" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Marketing strategy deliverables for TayoPay: video, slides, and PDF." />
+
+  <style>
+    :root{
+      --bg:#060b0a;
+      --panel:rgba(255,255,255,.06);
+      --panel2:rgba(255,255,255,.09);
+      --border:rgba(255,255,255,.12);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.66);
+      --accent:#59d1b0;
+      --shadow:0 18px 50px rgba(0,0,0,.55);
+      --r:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:
+        radial-gradient(900px 500px at 18% 18%, rgba(89,209,176,.12), transparent 60%),
+        radial-gradient(800px 500px at 70% 12%, rgba(89,209,176,.08), transparent 55%),
+        var(--bg);
+      color:var(--text);
+    }
+
+    /* topbar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px;
+      padding:14px 22px;
+      border-bottom:1px solid var(--border);
+      background:rgba(6,11,10,.72);
+      backdrop-filter:blur(14px);
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      color:inherit; text-decoration:none;
+      min-width:260px;
+    }
+    .brand__logo{
+      width:44px;height:44px; border-radius:12px;
+      object-fit:contain;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--border);
+    }
+    .brand__name{font-weight:800; letter-spacing:.2px}
+    .brand__sub{font-size:12px; color:var(--muted); margin-top:2px}
+    .nav{display:flex; align-items:center; gap:18px}
+    .nav a{
+      color:var(--muted);
+      text-decoration:none;
+      font-weight:700;
+      font-size:14px;
+      padding:8px 10px;
+      border-radius:12px;
+    }
+    .nav a:hover{color:var(--text); background:rgba(255,255,255,.05)}
+    .container{max-width:1120px; margin:0 auto; padding:28px 22px 44px}
+
+    /* hero layout */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:22px;
+      align-items:start;
+      margin-top:6px;
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+    }
+
+    .pill{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:7px 12px;
+      border-radius:999px;
+      border:1px solid rgba(89,209,176,.35);
+      background:rgba(89,209,176,.08);
+      color:rgba(180,255,235,.92);
+      font-weight:800;
+      font-size:12px;
+    }
+    h1{
+      margin:14px 0 8px;
+      font-size:52px;
+      line-height:1.02;
+      letter-spacing:-.9px;
+    }
+    @media (max-width: 520px){
+      h1{font-size:40px}
+    }
+    .accent{color:var(--accent)}
+    .subline{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:15px;
+      min-height:24px;
+    }
+
+    /* animated description */
+    .typewrap{
+      display:inline-block;
+      position:relative;
+    }
+    .cursor{
+      display:inline-block;
+      width:10px;
+      height:18px;
+      margin-left:4px;
+      border-radius:2px;
+      background:rgba(89,209,176,.85);
+      animation: blink 1s infinite;
+      vertical-align:-3px;
+    }
+    @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+    .fadeInUp{
+      animation: fadeInUp .6s ease both;
+    }
+    @keyframes fadeInUp{
+      from{opacity:0; transform:translateY(8px)}
+      to{opacity:1; transform:translateY(0)}
+    }
+
+    /* buttons */
+    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin:12px 0 14px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:8px;
+      padding:11px 14px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      text-decoration:none;
+      font-weight:800;
+      font-size:14px;
+      transition:transform .12s ease, background .12s ease;
+    }
+    .btn:hover{background:rgba(255,255,255,.08); transform:translateY(-1px)}
+    .btn--primary{
+      background:rgba(89,209,176,.18);
+      border:1px solid rgba(89,209,176,.35);
+    }
+    .btn--primary:hover{background:rgba(89,209,176,.24)}
+
+    .metaCards{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:10px;
+    }
+    @media (max-width:520px){.metaCards{grid-template-columns:1fr}}
+    .card{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.05);
+      border-radius:var(--r);
+      padding:14px;
+    }
+    .card__label{font-size:12px; color:var(--muted); font-weight:800}
+    .card__value{margin-top:6px; font-weight:850}
+
+    /* video card (reels vibe) */
+    .videoCard{
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius:22px;
+      padding:14px;
+      box-shadow:var(--shadow);
+    }
+    .videoTop{
+      display:flex; align-items:center; justify-content:space-between;
+      margin-bottom:10px;
+    }
+    .videoTitle{font-weight:900}
+    .linkBtn{
+      background:transparent;
+      border:none;
+      color:rgba(180,255,235,.92);
+      font-weight:900;
+      cursor:pointer;
+      padding:6px 8px;
+      border-radius:10px;
+    }
+    .linkBtn:hover{background:rgba(89,209,176,.10)}
+    .reelFrame{
+      width:100%;
+      max-width:420px;
+      margin-left:auto;
+      aspect-ratio: 9 / 16;
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background:#000;
+      position:relative;
+    }
+    @media (max-width: 900px){
+      .reelFrame{max-width:520px; margin:0 auto}
+    }
+    video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    /* slides */
+    .section{
+      margin-top:26px;
+      padding-top:6px;
+    }
+    .sectionHead{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      margin:18px 0 12px;
+    }
+    .h2{
+      margin:0;
+      font-size:22px;
+      letter-spacing:-.2px;
+    }
+    .slidesGrid{
+      display:grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 1100px){.slidesGrid{grid-template-columns: repeat(4, 1fr)}}
+    @media (max-width: 860px){.slidesGrid{grid-template-columns: repeat(3, 1fr)}}
+    @media (max-width: 560px){.slidesGrid{grid-template-columns: repeat(2, 1fr)}}
+
+    .slideCard{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      border-radius:16px;
+      overflow:hidden;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease;
+      position:relative;
+      min-height:120px;
+    }
+    .slideCard:hover{transform:translateY(-2px); background:rgba(255,255,255,.06)}
+    .slideImg{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      background:rgba(0,0,0,.25);
+    }
+    .slideBadge{
+      position:absolute; left:10px; top:10px;
+      padding:6px 9px;
+      border-radius:999px;
+      background:rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.18);
+      font-weight:900;
+      font-size:12px;
+      color:rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+    }
+
+    /* modal */
+    .modal{
+      position:fixed; inset:0;
+      display:none;
+      align-items:center; justify-content:center;
+      padding:18px;
+      z-index:100;
+    }
+    .modal.is-open{display:flex}
+    .backdrop{
+      position:absolute; inset:0;
+      background:rgba(0,0,0,.65);
+      backdrop-filter: blur(10px);
+    }
+    .panel{
+      position:relative;
+      width:min(980px, 100%);
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(10,14,13,.92);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .panelBar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px;
+      padding:12px 14px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+    .panelTitle{font-weight:950}
+    .iconBtn{
+      border:none;
+      background:rgba(255,255,255,.08);
+      color:var(--text);
+      font-weight:950;
+      border-radius:12px;
+      padding:8px 10px;
+      cursor:pointer;
+    }
+    .iconBtn:hover{background:rgba(255,255,255,.12)}
+    .panelBody{padding:0}
+    .modalVideoFrame{
+      width:100%;
+      aspect-ratio: 16 / 9;
+      background:#000;
+    }
+    .modalVideoFrame video{object-fit:contain}
+
+    .slideViewer{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#000;
+      min-height: min(75vh, 820px);
+    }
+    .slideViewer img{
+      width:100%;
+      height:auto;
+      max-height:80vh;
+      object-fit:contain;
+      display:block;
+    }
+    .panelNav{
+      display:flex; align-items:center; gap:8px;
+    }
+
+    .footer{
+      margin-top:28px;
+      padding-top:16px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:rgba(255,255,255,.55);
+      font-size:13px;
+    }
+  </style>
 </head>
 
 <body>
   <header class="topbar">
     <a class="brand" href="index.html" aria-label="Home">
-      <img
-        class="brand__logo"
-        src="assets/img/lulidigital-logo.png"
-        alt="LuliDigital"
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-      />
-      <div class="brand__text" style="display:none">
+      <img class="brand__logo" src="assets/img/lulidigital-logo.png" alt="LuliDigital"
+           onerror="this.style.display='none'; document.getElementById('brandFallback').style.display='block';" />
+      <div id="brandFallback" style="display:none">
         <div class="brand__name">LuliDigital</div>
         <div class="brand__sub">Marketing Strategy • TayoPay</div>
       </div>
-      <div class="brand__meta">
+      <div>
         <div class="brand__name">LuliDigital</div>
         <div class="brand__sub">Marketing Strategy • TayoPay</div>
       </div>
     </a>
 
     <nav class="nav">
-      <a class="nav__link is-active" href="index.html">Video</a>
-      <a class="nav__link" href="slides.html">Slides</a>
-      <a class="nav__link" href="assets/strategy.pdf" target="_blank" rel="noopener">PDF</a>
+      <a href="#video">Video</a>
+      <a href="#slides">Slides</a>
+      <a href="assets/strategy.pdf" target="_blank" rel="noopener">PDF</a>
     </nav>
   </header>
 
   <main class="container">
-    <section class="hero">
-      <div class="hero__left">
+    <section class="hero" id="video">
+      <!-- LEFT -->
+      <div class="fadeInUp">
         <div class="pill">90-day GTM • Growth loops • Execution plan</div>
 
-        <h1 class="h1">
+        <h1>
           Marketing Strategy for<br />
           <span class="accent">TayoPay</span>
         </h1>
 
         <p class="subline">
-          <span class="typewriter" data-text="Built for Africa & Asia remittance corridors — execution-ready."></span>
+          <span class="typewrap">
+            <span id="typeTarget"></span><span class="cursor" aria-hidden="true"></span>
+          </span>
         </p>
 
         <div class="ctaRow">
-          <a class="btn btn--primary" href="slides.html">Strategy walkthrough (slides)</a>
+          <a class="btn btn--primary" href="#slides">Strategy walkthrough (slides)</a>
           <a class="btn" href="assets/strategy.pdf" target="_blank" rel="noopener">Open PDF</a>
           <a class="btn" href="assets/strategy.pdf" download>Download PDF</a>
         </div>
@@ -67,29 +401,30 @@
         </div>
       </div>
 
-      <div class="hero__right">
-        <div class="videoCard">
-          <div class="videoCard__top">
-            <div class="videoCard__title">Product demo (video)</div>
-            <button class="linkBtn" id="expandBtn" type="button">Expand</button>
-          </div>
+      <!-- RIGHT -->
+      <div class="videoCard fadeInUp" style="animation-delay:.08s">
+        <div class="videoTop">
+          <div class="videoTitle">Product demo (video)</div>
+          <button class="linkBtn" id="expandVideoBtn" type="button">Expand</button>
+        </div>
 
-          <!-- Reels-style: vertical card, small by default -->
-          <div class="videoFrame" role="group" aria-label="Video player">
-            <video
-              id="heroVideo"
-              class="video"
-              controls
-              playsinline
-              preload="metadata"
-              poster=""
-            >
-              <source src="assets/video/tayopay-intro-1080.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
+        <!-- Small reels-style player (does NOT auto expand) -->
+        <div class="reelFrame" aria-label="Video player">
+          <video id="heroVideo" controls playsinline preload="metadata">
+            <source src="assets/video/tayopay-intro-1080.mp4" type="video/mp4" />
+          </video>
         </div>
       </div>
+    </section>
+
+    <!-- SLIDES -->
+    <section class="section" id="slides">
+      <div class="sectionHead">
+        <h2 class="h2">Strategy walkthrough (slides)</h2>
+        <a class="btn btn--primary" href="assets/strategy.pdf" download>Download slides (PDF)</a>
+      </div>
+
+      <div class="slidesGrid" id="slidesGrid" aria-label="Slides"></div>
     </section>
 
     <footer class="footer">
@@ -97,30 +432,157 @@
     </footer>
   </main>
 
-  <!-- Modal (only opens when user clicks Expand) -->
+  <!-- VIDEO MODAL -->
   <div class="modal" id="videoModal" aria-hidden="true">
-    <div class="modal__backdrop" id="modalBackdrop"></div>
-
-    <div class="modal__panel" role="dialog" aria-modal="true" aria-label="Expanded video">
-      <div class="modal__bar">
-        <div class="modal__title">Product demo</div>
-        <button class="iconBtn" id="closeModalBtn" type="button" aria-label="Close">✕</button>
+    <div class="backdrop" id="videoBackdrop"></div>
+    <div class="panel" role="dialog" aria-modal="true" aria-label="Expanded video">
+      <div class="panelBar">
+        <div class="panelTitle">Product demo</div>
+        <button class="iconBtn" id="closeVideoBtn" type="button" aria-label="Close">✕</button>
       </div>
-
-      <div class="modal__body">
-        <video
-          id="modalVideo"
-          class="video video--modal"
-          controls
-          playsinline
-          preload="metadata"
-        >
-          <source src="assets/video/tayopay-intro-1080.mp4" type="video/mp4" />
-        </video>
+      <div class="panelBody">
+        <div class="modalVideoFrame">
+          <video id="modalVideo" controls playsinline preload="metadata">
+            <source src="assets/video/tayopay-intro-1080.mp4" type="video/mp4" />
+          </video>
+        </div>
       </div>
     </div>
   </div>
 
-  <script src="script.js" defer></script>
+  <!-- SLIDE VIEWER MODAL -->
+  <div class="modal" id="slideModal" aria-hidden="true">
+    <div class="backdrop" id="slideBackdrop"></div>
+    <div class="panel" role="dialog" aria-modal="true" aria-label="Slide viewer">
+      <div class="panelBar">
+        <div class="panelTitle" id="slideTitle">Slide</div>
+        <div class="panelNav">
+          <button class="iconBtn" id="prevSlideBtn" type="button" aria-label="Previous">‹</button>
+          <button class="iconBtn" id="nextSlideBtn" type="button" aria-label="Next">›</button>
+          <button class="iconBtn" id="closeSlideBtn" type="button" aria-label="Close">✕</button>
+        </div>
+      </div>
+      <div class="slideViewer">
+        <img id="slideImage" alt="Slide" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ========= EDIT THESE 2 VALUES =========
+    const SLIDES = {
+      path: "assets/slides/",
+      prefix: "slide_",
+      ext: "png",  // change to "jpg" if your slides are .jpg
+      count: 18    // set to your real number of slides
+    };
+    // ======================================
+
+    // Typewriter animation (lightweight)
+    const text = "Built for Africa & Asia remittance corridors — execution-ready.";
+    const target = document.getElementById("typeTarget");
+    let i = 0;
+    (function type(){
+      if(i <= text.length){
+        target.textContent = text.slice(0, i++);
+        requestAnimationFrame(() => setTimeout(type, 18));
+      }
+    })();
+
+    // Build slides grid (lazy load)
+    const grid = document.getElementById("slidesGrid");
+    const slides = [];
+    for (let n = 1; n <= SLIDES.count; n++) {
+      const src = `${SLIDES.path}${SLIDES.prefix}${n}.${SLIDES.ext}`;
+      slides.push(src);
+
+      const card = document.createElement("button");
+      card.className = "slideCard";
+      card.type = "button";
+      card.setAttribute("aria-label", `Open slide ${n}`);
+
+      const badge = document.createElement("div");
+      badge.className = "slideBadge";
+      badge.textContent = `Slide ${n}`;
+      card.appendChild(badge);
+
+      const img = document.createElement("img");
+      img.className = "slideImg";
+      img.loading = "lazy";
+      img.decoding = "async";
+      img.src = src;
+      img.alt = `Slide ${n}`;
+      card.appendChild(img);
+
+      card.addEventListener("click", () => openSlide(n - 1));
+      grid.appendChild(card);
+    }
+
+    // Slide modal controls
+    const slideModal = document.getElementById("slideModal");
+    const slideBackdrop = document.getElementById("slideBackdrop");
+    const slideImage = document.getElementById("slideImage");
+    const slideTitle = document.getElementById("slideTitle");
+    const prevSlideBtn = document.getElementById("prevSlideBtn");
+    const nextSlideBtn = document.getElementById("nextSlideBtn");
+    const closeSlideBtn = document.getElementById("closeSlideBtn");
+    let currentSlide = 0;
+
+    function openSlide(idx){
+      currentSlide = idx;
+      slideTitle.textContent = `Slide ${idx + 1}`;
+      slideImage.src = slides[idx];
+      slideModal.classList.add("is-open");
+      slideModal.setAttribute("aria-hidden","false");
+    }
+    function closeSlide(){
+      slideModal.classList.remove("is-open");
+      slideModal.setAttribute("aria-hidden","true");
+    }
+    function prevSlide(){
+      openSlide((currentSlide - 1 + slides.length) % slides.length);
+    }
+    function nextSlide(){
+      openSlide((currentSlide + 1) % slides.length);
+    }
+    slideBackdrop.addEventListener("click", closeSlide);
+    closeSlideBtn.addEventListener("click", closeSlide);
+    prevSlideBtn.addEventListener("click", prevSlide);
+    nextSlideBtn.addEventListener("click", nextSlide);
+
+    // Video modal (expand only when user clicks)
+    const expandVideoBtn = document.getElementById("expandVideoBtn");
+    const videoModal = document.getElementById("videoModal");
+    const videoBackdrop = document.getElementById("videoBackdrop");
+    const closeVideoBtn = document.getElementById("closeVideoBtn");
+    const heroVideo = document.getElementById("heroVideo");
+    const modalVideo = document.getElementById("modalVideo");
+
+    function openVideoModal(){
+      // sync time for smooth experience
+      modalVideo.currentTime = heroVideo.currentTime || 0;
+      modalVideo.play().catch(()=>{});
+      videoModal.classList.add("is-open");
+      videoModal.setAttribute("aria-hidden","false");
+    }
+    function closeVideoModal(){
+      modalVideo.pause();
+      // sync back (optional)
+      heroVideo.currentTime = modalVideo.currentTime || heroVideo.currentTime || 0;
+      videoModal.classList.remove("is-open");
+      videoModal.setAttribute("aria-hidden","true");
+    }
+    expandVideoBtn.addEventListener("click", openVideoModal);
+    videoBackdrop.addEventListener("click", closeVideoModal);
+    closeVideoBtn.addEventListener("click", closeVideoModal);
+
+    // ESC closes modals
+    window.addEventListener("keydown", (e) => {
+      if(e.key === "Escape"){
+        closeSlide();
+        closeVideoModal();
+      }
+    });
+  </script>
 </body>
 </html>
