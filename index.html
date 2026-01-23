@@ -1,141 +1,295 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TayoPay Marketing Strategy • LuliDigital</title>
-  <meta name="description" content="Marketing strategy walkthrough for TayoPay by LuliDigital. Video overview, downloadable strategy PDF, and slide-by-slide walkthrough." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marketing Strategy for TayoPay · LuliDigital</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f0e;
+      --card: #121917;
+      --text: #e9f1ee;
+      --muted: #9fb3ad;
+      --accent: #4fd1a5;
+      --border: rgba(255,255,255,0.06);
+    }
 
-  <link rel="stylesheet" href="styles.css" />
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+      background: radial-gradient(1200px 600px at 20% -10%, #14352b 0%, var(--bg) 55%);
+      color: var(--text);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 36px;
+      margin-bottom: 64px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-text {
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(79,209,165,0.1);
+      color: var(--accent);
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.1;
+      margin: 0 0 16px;
+    }
+
+    .accent {
+      color: var(--accent);
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 28px;
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      padding: 14px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, #2bbf8a, #4fd1a5);
+      color: #062016;
+      border: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Video Card */
+    .video-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 16px;
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .video-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .video-card h3 {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .tip {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    video {
+      width: 100%;
+      border-radius: 14px;
+      background: #000;
+    }
+
+    /* Slides */
+    .section-title {
+      font-size: 22px;
+      margin: 72px 0 20px;
+    }
+
+    .slides {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .slide {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 10px;
+      cursor: pointer;
+      transition: transform .2s ease;
+    }
+
+    .slide:hover {
+      transform: translateY(-4px);
+    }
+
+    .slide img {
+      width: 100%;
+      border-radius: 12px;
+      display: block;
+    }
+
+    footer {
+      margin-top: 80px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity: .9; }
+      50% { opacity: 1; }
+    }
+  </style>
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="container topbar__inner">
-      <a class="brand" href="#top" aria-label="LuliDigital">
-        <img class="brand__logo" src="assets/img/lulidigital-logo.png" alt="LuliDigital logo" />
-        <div class="brand__text">
-          <div class="brand__name">LuliDigital</div>
-          <div class="brand__sub">Marketing Strategy • TayoPay</div>
-        </div>
-      </a>
+  <div class="container">
 
-      <nav class="nav">
-        <a class="nav__link" href="#video">Video</a>
-        <a class="nav__link" href="#slides">Slides</a>
-        <a class="nav__link" href="#pdf">PDF</a>
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <img src="assets/img/lulidigital-logo.png" alt="LuliDigital logo" />
+        <div>
+          <strong>LuliDigital</strong><br>
+          <span style="font-size:12px;color:var(--muted)">Marketing Strategy · TayoPay</span>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#video">Video</a>
+        <a href="#slides">Slides</a>
+        <a href="#pdf">PDF</a>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main id="top" class="page">
+    <!-- Hero -->
     <section class="hero">
-      <div class="container hero__grid">
-        <div class="hero__copy">
-          <div class="pill">90-day GTM • Growth loops • Execution plan</div>
+      <div class="hero-text">
+        <span class="badge">90-day GTM · Growth loops · Execution plan</span>
 
-          <h1 class="hero__title">
-            Marketing Strategy for <span class="accent">TayoPay</span>
-          </h1>
+        <h1>
+          Marketing Strategy for <span class="accent">TayoPay</span>
+        </h1>
 
-          <p class="hero__desc">
-            <span id="typed"></span><span class="cursor" aria-hidden="true">▍</span>
-          </p>
+        <p class="subtitle">
+          Built for Africa & Asia remittance corridors — execution-ready.
+        </p>
 
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="#slides">
-              👉 Strategy walkthrough (slides)
-            </a>
-            <a class="btn btn--ghost" href="assets/strategy.pdf" target="_blank" rel="noopener">
-              Open PDF
-            </a>
-            <a class="btn btn--ghost" href="assets/strategy.pdf" download>
-              Download PDF
-            </a>
-          </div>
+        <div class="actions">
+          <a href="#slides" class="btn primary">👉 Strategy walkthrough (slides)</a>
+          <a href="assets/pdf/TayoPay_Digital_Marketing_Strategy.pdf" class="btn">Open PDF</a>
+          <a href="assets/pdf/TayoPay_Digital_Marketing_Strategy.pdf" download class="btn">Download PDF</a>
+        </div>
+      </div>
 
-          <div class="hero__meta">
-            <div class="metaCard">
-              <div class="metaCard__k">Deliverable</div>
-              <div class="metaCard__v">Strategy + slide walkthrough + video overview</div>
-            </div>
-            <div class="metaCard">
-              <div class="metaCard__k">Prepared by</div>
-              <div class="metaCard__v">LuliDigital Agency</div>
-            </div>
-          </div>
+      <!-- Video -->
+      <div class="video-card" id="video">
+        <div class="video-card__header">
+          <h3>Product demo (video)</h3>
+          <span class="tip">Tap fullscreen for best viewing</span>
         </div>
 
-        <div class="hero__media" id="video">
-          <div class="card">
-            <div class="card__head">
-              <div class="card__title">Strategy overview (video)</div>
-              <div class="card__hint">Tip: tap fullscreen for best viewing</div>
-            </div>
-
-            <div class="videoWrap">
-              <video
-                class="video"
-                controls
-                playsinline
-                preload="metadata"
-                src="assets/video/tayopay-intro.mp4">
-              </video>
-            </div>
-          </div>
-        </div>
+        <video controls playsinline preload="metadata">
+          <source src="assets/video/tayopay-intro-1080.mp4" type="video/mp4">
+        </video>
       </div>
     </section>
 
-    <section class="section" id="slides">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="section__title">Strategy walkthrough</h2>
-          <p class="section__sub">Click a slide to open it. Use arrows (or swipe on mobile) to navigate.</p>
-        </div>
+    <!-- Slides -->
+    <h2 class="section-title" id="slides">Strategy walkthrough</h2>
 
-        <div class="slidesGrid" id="slidesGrid" aria-label="Slides grid"></div>
-      </div>
-    </section>
-
-    <section class="section" id="pdf">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="section__title">Strategy PDF</h2>
-          <p class="section__sub">Keep this if you want the PDF accessible and downloadable.</p>
-        </div>
-
-        <div class="pdfActions">
-          <a class="btn btn--ghost" href="assets/strategy.pdf" target="_blank" rel="noopener">Open Strategy PDF</a>
-          <a class="btn btn--ghost" href="assets/strategy.pdf" download>Download PDF</a>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="container footer__inner">
-        <div>© <span id="year"></span> LuliDigital • TayoPay Strategy</div>
-        <a class="nav__link" href="#top">Back to top</a>
-      </div>
-    </footer>
-  </main>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Slide viewer">
-    <div class="lightbox__bg" data-close="1"></div>
-    <div class="lightbox__panel">
-      <button class="iconBtn" type="button" data-close="1" aria-label="Close">✕</button>
-      <button class="iconBtn iconBtn--left" type="button" id="prevBtn" aria-label="Previous slide">‹</button>
-      <button class="iconBtn iconBtn--right" type="button" id="nextBtn" aria-label="Next slide">›</button>
-      <img id="lightboxImg" class="lightbox__img" alt="Slide" />
-      <div class="lightbox__caption" id="lightboxCap"></div>
+    <div class="slides">
+      <div class="slide"><img src="assets/slides/slide-1.jpg" alt=""></div>
+      <div class="slide"><img src="assets/slides/slide-2.jpg" alt=""></div>
+      <div class="slide"><img src="assets/slides/slide-3.jpg" alt=""></div>
+      <div class="slide"><img src="assets/slides/slide-4.jpg" alt=""></div>
+      <div class="slide"><img src="assets/slides/slide-5.jpg" alt=""></div>
+      <div class="slide"><img src="assets/slides/slide-6.jpg" alt=""></div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <!-- Footer -->
+    <footer id="pdf">
+      <span>© 2026 LuliDigital · TayoPay Strategy</span>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+
+  </div>
 </body>
 </html>
