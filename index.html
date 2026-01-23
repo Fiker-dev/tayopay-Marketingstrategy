@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>TayoPay Marketing Strategy • LuliDigital</title>
+
   <style>
     :root{
       --bg:#07110f;
@@ -12,275 +13,181 @@
       --muted:rgba(255,255,255,.70);
       --accent:#47d6b3;
       --shadow: 0 18px 60px rgba(0,0,0,.45);
-      --radius2:22px;
+      --radius:22px;
       --max:1100px;
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
+
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--text);
       background:
         radial-gradient(1200px 600px at 20% 15%, rgba(71,214,179,.14), transparent 55%),
         radial-gradient(900px 700px at 80% 20%, rgba(156,243,223,.10), transparent 52%),
-        radial-gradient(900px 700px at 50% 90%, rgba(71,214,179,.08), transparent 55%),
         linear-gradient(180deg, var(--bg), var(--bg2));
-      overflow-x:hidden;
     }
 
     a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 60px;}
+    .wrap{max-width:var(--max);margin:0 auto;padding:28px 18px 60px}
 
-    /* Top bar */
+    /* Header */
     .topbar{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:14px; padding:10px 0 22px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding-bottom:24px;
     }
-    .brand{display:flex; align-items:center; gap:10px; min-width:180px;}
+
+    .brand{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+
     .logo{
-      width:32px;height:32px;border-radius:10px;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      display:grid; place-items:center;
+      width:32px;
+      height:32px;
+      border-radius:10px;
+      background:rgba(255,255,255,.08);
       overflow:hidden;
-      box-shadow: 0 10px 24px rgba(0,0,0,.25);
-      flex:0 0 auto;
     }
-    .logo img{width:100%;height:100%;object-fit:cover;display:block}
-    .brandText{line-height:1.05}
-    .brandText .name{font-weight:700; font-size:14px; letter-spacing:.2px}
+
+    .logo img{width:100%;height:100%;object-fit:cover}
+
+    .brandText .name{font-weight:700;font-size:14px}
     .brandText .sub{font-size:12px;color:var(--muted)}
 
-    .panel{
-      border:1px solid rgba(255,255,255,.10);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
-      border-radius:var(--radius2);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-
-    /* Hero layout */
+    /* Hero */
     .hero{
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
+      grid-template-columns:1.1fr .9fr;
       gap:18px;
-      align-items:stretch;
-      margin-top:6px;
-    }
-    @media (max-width: 980px){
-      .hero{grid-template-columns: 1fr;}
     }
 
-    .left{padding:22px 22px 18px; position:relative;}
+    @media(max-width:980px){
+      .hero{grid-template-columns:1fr}
+    }
+
+    .panel{
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px;
+    }
+
     .pill{
-      display:inline-flex; gap:8px; align-items:center;
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid rgba(71,214,179,.22);
-      background: rgba(71,214,179,.10);
-      color: rgba(156,243,223,.95);
+      display:inline-block;
       font-size:12px;
-      letter-spacing:.2px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(71,214,179,.14);
+      color:#bff5e7;
       margin-bottom:10px;
     }
 
-    .h1{
+    h1{
       font-size:54px;
-      line-height:1.02;
-      margin:10px 0 10px;
-      letter-spacing:-.8px;
+      line-height:1.05;
+      margin:10px 0;
     }
-    @media (max-width: 520px){ .h1{font-size:40px} }
-    .h1 .accent{color:var(--accent)}
 
+    h1 span{color:var(--accent)}
+
+    @media(max-width:520px){
+      h1{font-size:40px}
+    }
+
+    /* Animated typing */
     .desc{
-      margin:0;
-      color:var(--muted);
       font-size:16px;
-      line-height:1.55;
-      max-width: 54ch;
-      min-height: 56px;
+      color:var(--muted);
+      min-height:52px;
     }
 
-    /* Animated description (type + caret) */
     .typing{
-      display:inline;
-      border-right: 2px solid rgba(156,243,223,.7);
+      border-right:2px solid rgba(156,243,223,.8);
       padding-right:4px;
-      animation: caretBlink .9s infinite;
-    }
-    @keyframes caretBlink{
-      0%, 50%{border-right-color:rgba(156,243,223,.7)}
-      51%, 100%{border-right-color:transparent}
+      animation:blink .9s infinite;
     }
 
-    .actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;}
+    @keyframes blink{
+      0%,50%{border-color:rgba(156,243,223,.8)}
+      51%,100%{border-color:transparent}
+    }
+
+    /* Buttons */
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
 
     .btn{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      color:var(--text);
-      padding:11px 14px;
+      padding:11px 16px;
       border-radius:999px;
-      font-weight:700;
-      font-size:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      font-weight:600;
       cursor:pointer;
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      transition: transform .15s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
-      user-select:none;
+      transition:.15s ease;
+    }
+
+    .btn:hover{transform:translateY(-1px)}
+
+    .btn--primary{
+      background:rgba(71,214,179,.20);
+      border-color:rgba(71,214,179,.35);
+    }
+
+    /* Pulse animation */
+    .btn--pulse{
       position:relative;
       overflow:hidden;
-      will-change: transform;
-    }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18)}
-    .btn:active{transform: translateY(0px)}
-
-    .btnPrimary{
-      background: rgba(71,214,179,.16);
-      border-color: rgba(71,214,179,.26);
-      box-shadow: 0 10px 30px rgba(71,214,179,.10);
     }
 
-    /* Button animation: sheen + soft pulse */
-    .btnSheen::after{
+    .btn--pulse::after{
       content:"";
-      position:absolute; inset:-45%;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(156,243,223,.24), transparent 45%),
-        radial-gradient(circle at 80% 60%, rgba(71,214,179,.18), transparent 45%);
-      transform: translateX(-35%) rotate(10deg);
-      animation: sheen 2.8s ease-in-out infinite;
-      pointer-events:none;
-      opacity:.35;
-    }
-    @keyframes sheen{
-      0%{transform: translateX(-38%) rotate(10deg); opacity:.25}
-      50%{transform: translateX(6%) rotate(10deg); opacity:.60}
-      100%{transform: translateX(-38%) rotate(10deg); opacity:.25}
+      position:absolute;
+      inset:-40%;
+      background:radial-gradient(circle at 20% 20%, rgba(156,243,223,.35), transparent 45%);
+      animation:pulse 2.8s infinite;
     }
 
-    .btnPulseAnim{
-      animation: btnPulse 2.4s ease-in-out infinite;
-    }
-    @keyframes btnPulse{
-      0%, 100%{ box-shadow: 0 10px 30px rgba(71,214,179,.10) }
-      50%{ box-shadow: 0 18px 46px rgba(71,214,179,.18) }
+    @keyframes pulse{
+      0%{opacity:.25}
+      50%{opacity:.55}
+      100%{opacity:.25}
     }
 
-    /* Right video card */
-    .right{padding:14px; display:flex; flex-direction:column; gap:10px;}
-    .vHeader{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:10px 10px 0;
-      color:var(--muted);
-      font-size:13px;
-    }
-    .vTitle{color:var(--text); font-weight:800}
-    .vHint{opacity:.9}
-
+    /* Video */
     .videoCard{
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.28);
+      aspect-ratio:9/16;
+      background:#000;
       border-radius:16px;
       overflow:hidden;
-      box-shadow: 0 14px 40px rgba(0,0,0,.42);
-      position:relative;
-      aspect-ratio: 9 / 16; /* reel vibe on desktop */
     }
-    @media (max-width:980px){
-      .videoCard{aspect-ratio: 16 / 9;}
+
+    @media(max-width:980px){
+      .videoCard{aspect-ratio:16/9}
     }
 
     video{
-      width:100%; height:100%; object-fit:cover; display:block; background:#000;
-    }
-
-    .overlayControls{
-      position:absolute; inset:0;
-      display:flex; align-items:flex-end; justify-content:space-between;
-      padding:12px;
-      pointer-events:none;
-      background: linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.00) 40%, rgba(0,0,0,.50));
-    }
-    .overlayLeft{display:flex; gap:10px; align-items:center; pointer-events:auto;}
-    .chip{
-      font-size:12px;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.08);
-      color:var(--text);
-      backdrop-filter: blur(10px);
-      cursor:pointer;
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
-      user-select:none;
-      display:inline-flex; align-items:center; gap:8px;
-    }
-    .chip:hover{transform:translateY(-1px); background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.20)}
-    .chip:active{transform:translateY(0px)}
-    .chipPrimary{background: rgba(71,214,179,.18); border-color: rgba(71,214,179,.28)}
-    .overlayRight{pointer-events:auto}
-
-    /* Modal (video expand) */
-    .modal{
-      position:fixed; inset:0;
-      background: rgba(0,0,0,.72);
-      display:none;
-      align-items:center; justify-content:center;
-      padding:16px;
-      z-index:50;
-    }
-    .modal.open{display:flex}
-    .modalBox{
-      width:min(1100px, 96vw);
-      max-height: 90vh;
-      border-radius: 18px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(8,16,14,.92);
-      box-shadow: 0 30px 90px rgba(0,0,0,.65);
-      position:relative;
-    }
-    .modalTop{
-      display:flex; justify-content:space-between; align-items:center;
-      padding:12px 14px;
-      border-bottom:1px solid rgba(255,255,255,.10);
-      color:var(--muted);
-      font-size:13px;
-    }
-    .modalTop strong{color:var(--text)}
-    .modalClose{
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color:var(--text);
-      padding:8px 10px;
-      border-radius:999px;
-      cursor:pointer;
-    }
-    .modalBody{
-      padding:0;
-      display:grid;
-      place-items:center;
-      background:#000;
-    }
-    .modalBody video{
       width:100%;
-      height:auto;
-      max-height: calc(90vh - 52px);
-      object-fit:contain;
-      display:block;
-      background:#000;
+      height:100%;
+      object-fit:cover;
     }
 
     footer{
-      margin-top:26px;
-      color:rgba(255,255,255,.55);
+      margin-top:30px;
       font-size:12px;
-      padding-top:18px;
+      color:rgba(255,255,255,.55);
       border-top:1px solid rgba(255,255,255,.08);
+      padding-top:18px;
     }
   </style>
 </head>
@@ -288,190 +195,96 @@
 <body>
   <div class="wrap">
 
-    <!-- TOP BAR -->
+    <!-- HEADER -->
     <div class="topbar">
-      <a class="brand" href="#" aria-label="Home">
+      <div class="brand">
         <div class="logo">
-          <img src="assets/img/lulidigital-logo.png"
-               onerror="this.onerror=null;this.src='assets/logo/lulidigital-logo.png';"
-               alt="LuliDigital logo">
+          <img src="assets/img/lulidigital-logo.png" alt="LuliDigital">
         </div>
         <div class="brandText">
           <div class="name">LuliDigital</div>
           <div class="sub">Marketing Strategy • TayoPay</div>
         </div>
-      </a>
+      </div>
     </div>
 
     <!-- HERO -->
-    <section aria-label="Home">
-      <div class="hero">
+    <section class="hero">
 
-        <!-- LEFT -->
-        <div class="panel left">
-          <div class="pill">90-day GTM • Growth loops • Execution plan</div>
+      <!-- LEFT -->
+      <div class="panel">
+        <div class="pill">90-day GTM • Growth loops • Execution plan</div>
 
-          <div class="h1">
-            Marketing Strategy for <span class="accent">TayoPay</span>
-          </div>
+        <h1>
+          Marketing Strategy for <span>TayoPay</span>
+        </h1>
 
-          <p class="desc" aria-live="polite">
-            <span id="typing" class="typing"></span>
-          </p>
+        <p class="desc">
+          <span id="typing" class="typing"></span>
+        </p>
 
-          <div class="actions">
-            <!-- OPEN = CANVA LINK -->
-            <a class="btn btnPrimary btnSheen btnPulseAnim"
-               href="https://www.canva.com/design/DAG_Jaj-p5o/decvSlkOgyjEyAFmm9rl_w/edit?utm_content=DAG_Jaj-p5o&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
-               target="_blank"
-               rel="noopener">
-              👉 Open strategy walkthrough (slides)
-            </a>
+        <div class="actions">
 
-            <!-- KEEP DOWNLOAD (compressed PDF) -->
-            <a class="btn btnSheen"
-               href="assets/strategy-compressed.pdf"
-               download>
-              Download slides
-            </a>
-          </div>
+          <!-- ✅ REPLACED BUTTON (CANVA) -->
+          <a class="btn btn--primary btn--pulse"
+             href="https://www.canva.com/design/DAG_Jaj-p5o/decvSlkOgyjEyAFmm9rl_w/edit?utm_content=DAG_Jaj-p5o&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+             target="_blank"
+             rel="noopener noreferrer">
+            👉 Strategy walkthrough (slides)
+          </a>
+
+          <!-- KEEP DOWNLOAD -->
+          <a class="btn"
+             href="assets/strategy-compressed.pdf"
+             download>
+            Download slides
+          </a>
         </div>
-
-        <!-- RIGHT (VIDEO) -->
-        <div class="panel right" aria-label="Video panel">
-          <div class="vHeader">
-            <div class="vTitle">Product demo (video)</div>
-            <div class="vHint">Play here or expand</div>
-          </div>
-
-          <div class="videoCard">
-            <!-- Lazy-load video: no src at first -->
-            <video id="heroVideo"
-                   preload="none"
-                   playsinline
-                   controlslist="nodownload noplaybackrate"
-                   data-src="assets/video/tayopay-intro-1080.mp4"></video>
-
-            <div class="overlayControls">
-              <div class="overlayLeft">
-                <button class="chip chipPrimary" id="playInlineBtn" type="button">▶ Play</button>
-                <button class="chip" id="pauseInlineBtn" type="button" style="display:none;">⏸ Pause</button>
-              </div>
-              <div class="overlayRight">
-                <button class="chip" id="expandBtn" type="button">⤢ Expand</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
 
-      <footer>© 2026 LuliDigital • Marketing Strategy for TayoPay</footer>
+      <!-- RIGHT -->
+      <div class="panel">
+        <div class="videoCard">
+          <video
+            preload="none"
+            playsinline
+            controls
+            src="assets/video/tayopay-intro-1080.mp4">
+          </video>
+        </div>
+      </div>
+
     </section>
 
+    <footer>
+      © 2026 LuliDigital • Marketing Strategy for TayoPay
+    </footer>
+
   </div>
 
-  <!-- MODAL (video expand) -->
-  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-label="Video modal">
-    <div class="modalBox">
-      <div class="modalTop">
-        <div><strong id="modalTitle">Product demo (video)</strong></div>
-        <button class="modalClose" id="modalClose" type="button">Close</button>
-      </div>
-      <div class="modalBody" id="modalBody"></div>
-    </div>
-  </div>
-
+  <!-- Typing script -->
   <script>
-    // 1) Animated description (typewriter)
     const lines = [
-      "A 90-day GTM plan built for Africa & Asia remittance corridors — execution-ready.",
-      "Positioning, channels, and an execution roadmap designed to drive measurable growth.",
-      "Open the slide walkthrough for the full plan and next steps."
+      "A 90-day GTM plan built for Africa & Asia remittance corridors.",
+      "Clear positioning, channels, and an execution roadmap.",
+      "Open the walkthrough to see the full strategy."
     ];
-    const typingEl = document.getElementById("typing");
 
-    let lineIdx = 0, charIdx = 0, deleting = false;
-    function tick(){
-      const current = lines[lineIdx];
-      if (!deleting) {
-        typingEl.textContent = current.slice(0, charIdx++);
-        if (charIdx > current.length + 16) deleting = true;
-      } else {
-        typingEl.textContent = current.slice(0, charIdx--);
-        if (charIdx <= 0) {
-          deleting = false;
-          lineIdx = (lineIdx + 1) % lines.length;
-          charIdx = 0;
-        }
+    const el = document.getElementById("typing");
+    let i=0,j=0,del=false;
+
+    function type(){
+      if(!del){
+        el.textContent = lines[i].slice(0, ++j);
+        if(j > lines[i].length + 14) del=true;
+      }else{
+        el.textContent = lines[i].slice(0, --j);
+        if(j<=0){del=false;i=(i+1)%lines.length}
       }
-      setTimeout(tick, deleting ? 22 : 18);
+      setTimeout(type, del?22:18);
     }
-    tick();
-
-    // 2) Video: lazy-load source only on user action
-    const heroVideo = document.getElementById("heroVideo");
-    const playInlineBtn = document.getElementById("playInlineBtn");
-    const pauseInlineBtn = document.getElementById("pauseInlineBtn");
-    const expandBtn = document.getElementById("expandBtn");
-
-    function ensureVideoSrc(videoEl){
-      if (!videoEl.getAttribute("src")) {
-        const ds = videoEl.getAttribute("data-src");
-        if (ds) videoEl.setAttribute("src", ds);
-      }
-    }
-
-    playInlineBtn.addEventListener("click", async () => {
-      try{
-        ensureVideoSrc(heroVideo);
-        await heroVideo.play();
-        playInlineBtn.style.display = "none";
-        pauseInlineBtn.style.display = "inline-flex";
-      }catch(e){}
-    });
-
-    pauseInlineBtn.addEventListener("click", () => {
-      heroVideo.pause();
-      playInlineBtn.style.display = "inline-flex";
-      pauseInlineBtn.style.display = "none";
-    });
-
-    // 3) Modal (expand video)
-    const modal = document.getElementById("modal");
-    const modalBody = document.getElementById("modalBody");
-    const modalClose = document.getElementById("modalClose");
-
-    function openModal(node){
-      modalBody.innerHTML = "";
-      modalBody.appendChild(node);
-      modal.classList.add("open");
-      modal.setAttribute("aria-hidden","false");
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeModal(){
-      const v = modalBody.querySelector("video");
-      if (v) { try { v.pause(); } catch(e){} }
-      modal.classList.remove("open");
-      modal.setAttribute("aria-hidden","true");
-      modalBody.innerHTML = "";
-      document.body.style.overflow = "";
-    }
-
-    modalClose.addEventListener("click", closeModal);
-    modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
-    window.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
-
-    expandBtn.addEventListener("click", () => {
-      const v = document.createElement("video");
-      v.controls = true;
-      v.autoplay = true;
-      v.playsInline = true;
-      v.preload = "metadata";
-      v.src = heroVideo.getAttribute("src") || heroVideo.getAttribute("data-src");
-      openModal(v);
-    });
+    type();
   </script>
+
 </body>
 </html>
